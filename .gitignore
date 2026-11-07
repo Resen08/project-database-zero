@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Test / Coverage
+coverage/
+
+# Local cache
+*.tsbuildinfo
+.vite/
+
+# Screenshots & Logs
+screenshot_*.png
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
