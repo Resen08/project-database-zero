@@ -4,52 +4,53 @@ import { CHARACTER_LABELS, SupportedLanguage } from '../services/i18n';
 import { assetUrl } from '../utils/assets';
 
 interface AvatarSvgProps {
-  type: DialogueLine['avatarType'];
+  type: DialogueLine['avatarType'] | 'jhin' | string;
   animated?: boolean;
   language?: SupportedLanguage;
 }
 
-const CHARACTER_SPRITE_CONFIG: Record<
-  DialogueLine['avatarType'],
+const CHARACTER_AVATAR_CONFIG: Record<
+  string,
   {
-    sheetUrl: string;
-    kind: 'rpg64' | 'facility16';
+    avatarUrl: string;
     borderColor: string;
   }
 > = {
   aria: {
-    sheetUrl: assetUrl('/assets/characters/char_aria_sheet.png'),
-    kind: 'rpg64',
+    avatarUrl: assetUrl('/assets/characters/avatar_ahri.png'),
     borderColor: '#00f0ff',
   },
   kyle: {
-    sheetUrl: assetUrl('/assets/characters/char_kyle_sheet.png'),
-    kind: 'rpg64',
+    avatarUrl: assetUrl('/assets/characters/avatar_jayce.png'),
     borderColor: '#f59e0b',
   },
   zero: {
-    sheetUrl: assetUrl('/assets/characters/char_zero_sheet.png'),
-    kind: 'rpg64',
+    avatarUrl: assetUrl('/assets/characters/avatar_zed.png'),
     borderColor: '#ff3b6b',
   },
   elena: {
-    sheetUrl: assetUrl('/assets/characters/char_elena_sheet.png'),
-    kind: 'facility16',
+    avatarUrl: assetUrl('/assets/characters/avatar_heimerdinger.png'),
     borderColor: '#10b981',
   },
+  jhin: {
+    avatarUrl: assetUrl('/assets/characters/avatar_jhin.png'),
+    borderColor: '#c084fc',
+  },
+  player: {
+    avatarUrl: assetUrl('/assets/characters/avatar_ezreal.png'),
+    borderColor: '#38bdf8',
+  },
   system: {
-    sheetUrl: assetUrl('/assets/characters/char_ian_inspector_sheet.png'),
-    kind: 'facility16',
+    avatarUrl: assetUrl('/assets/characters/avatar_ezreal.png'),
     borderColor: '#38bdf8',
   },
 };
 
 export const AvatarSvg: React.FC<AvatarSvgProps> = ({
   type,
-  animated = true,
   language = 'de',
 }) => {
-  const cfg = CHARACTER_SPRITE_CONFIG[type] || CHARACTER_SPRITE_CONFIG.system;
+  const cfg = CHARACTER_AVATAR_CONFIG[type] || CHARACTER_AVATAR_CONFIG.system;
   const label =
     CHARACTER_LABELS[language]?.[type] ||
     CHARACTER_LABELS.de[type] ||
@@ -57,14 +58,15 @@ export const AvatarSvg: React.FC<AvatarSvgProps> = ({
 
   return (
     <div
-      className={`pixel-avatar-frame ${cfg.kind} ${animated ? 'is-animated' : ''}`}
+      className="pixel-avatar-frame unified-pixel-art"
       style={{ borderColor: cfg.borderColor }}
       title={label}
       aria-label={label}
     >
-      <div
-        className={`pixel-sprite-slice ${cfg.kind}-slice`}
-        style={{ backgroundImage: `url("${cfg.sheetUrl}")` }}
+      <img
+        src={cfg.avatarUrl}
+        alt={label}
+        className="unified-avatar-img pixelated"
       />
     </div>
   );

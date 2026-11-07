@@ -7,7 +7,7 @@ export interface DialogueLine {
   speakerId: string;
   speakerName: string;
   speakerRole: string;
-  avatarType: 'aria' | 'kyle' | 'zero' | 'elena' | 'system';
+  avatarType: 'aria' | 'kyle' | 'zero' | 'elena' | 'system' | 'jhin' | 'player';
   text: string;
   sqlTip?: string;
 }

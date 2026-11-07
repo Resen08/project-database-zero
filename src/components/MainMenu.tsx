@@ -139,7 +139,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
               <div
                 className="player-sprite-char pixelated"
                 style={{
-                  backgroundImage: `url("${PLAYER_IDLE_FRAMES[animFrame]}")`,
+                  backgroundImage: `url("${assetUrl('/assets/characters/char_ezreal.png')}")`,
                 }}
               />
             </div>
@@ -170,7 +170,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
               <div
                 className="aria-sprite-char pixelated"
                 style={{
-                  backgroundImage: `url("${assetUrl('/assets/characters/char_aria_sheet.png')}")`,
+                  backgroundImage: `url("${assetUrl('/assets/characters/char_ahri.png')}")`,
                 }}
               />
               <div

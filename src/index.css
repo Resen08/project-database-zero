@@ -460,10 +460,9 @@ body,
 .profile-pixel-face {
   width: 100%;
   height: 100%;
-  background-position: center top -2px;
-  background-size: 130%;
-  background-repeat: no-repeat;
+  object-fit: cover;
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
   display: block;
 }
 
@@ -681,8 +680,8 @@ body,
 }
 
 .player-sprite-char {
-  width: 71px;
-  height: 67px;
+  width: 62px;
+  height: 86px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -813,11 +812,11 @@ body,
 }
 
 .aria-sprite-char {
-  width: 48px;
-  height: 64px;
-  background-position: 0 0;
+  width: 68px;
+  height: 86px;
+  background-position: center bottom;
   background-repeat: no-repeat;
-  background-size: 192px 256px;
+  background-size: contain;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8));
 }
 
@@ -3764,6 +3763,15 @@ dialog::backdrop {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   background-repeat: no-repeat;
+}
+
+.unified-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  display: block;
 }
 
 .rpg64-slice {

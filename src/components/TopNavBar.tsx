@@ -147,9 +147,10 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
         {/* 수사관 프로필 칩 */}
         <div className="player-profile-chip" title={`${rank.title} (Level ${rank.level})`}>
           <div className="profile-avatar-mini" aria-hidden="true">
-            <span
-              className="profile-pixel-face"
-              style={{ backgroundImage: `url("${assetUrl('/assets/sprites/player_idle_1.png')}")` }}
+            <img
+              src={assetUrl('/assets/characters/avatar_ezreal.png')}
+              alt="Investigator Ezreal"
+              className="profile-pixel-face pixelated"
             />
           </div>
           <div className="profile-meta">
