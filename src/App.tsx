@@ -85,7 +85,12 @@ export const App: React.FC = () => {
       const nextLang: SupportedLanguage = currentL === 'de' ? 'ko' : 'de';
       const prevStarter = getMissionI18n(prev.currentMissionId, currentL).starterQuery;
       setEditorQuery((q) => {
-        if (!q || q.trim() === prevStarter.trim() || q.includes('Citizens')) {
+        if (
+          !q ||
+          q.trim() === prevStarter.trim() ||
+          q.trim().startsWith('-- Thema') ||
+          q.trim().startsWith('-- 테마')
+        ) {
           return getMissionI18n(prev.currentMissionId, nextLang).starterQuery;
         }
         return q;

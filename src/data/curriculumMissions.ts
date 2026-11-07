@@ -22,7 +22,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
     objectiveSummary:
       'Citizens 테이블의 모든 컬럼과 모든 행(10명)을 조회하는 SELECT 쿼리를 작성하고 실행하세요.',
     targetTables: ['Citizens'],
-    starterQuery: '-- Thema 1 - Stufe 1: Frage alle Daten aus der Tabelle Citizens ab.\nSELECT * FROM Citizens;',
+    starterQuery: '-- Thema 1 - Stufe 1\n',
     hints: [
       '모든 컬럼을 조회할 때는 별표(*) 기호를 사용합니다: SELECT *',
       '어느 테이블에서 가져올지 지정할 때는 FROM 테이블명 을 작성합니다.',
@@ -83,7 +83,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       "Citizens 테이블에서 WHERE 절을 사용하여 status 컬럼 값이 'MISSING'인 시민을 조회하세요.",
     targetTables: ['Citizens'],
     starterQuery:
-      "-- Thema 1 - Stufe 2: Suche nach der vermissten Dr. Heimerdinger (status = 'MISSING').\nSELECT * FROM Citizens\nWHERE status = 'MISSING';",
+      '-- Thema 1 - Stufe 2\n',
     hints: [
       '특정 조건에 맞는 행만 골라낼 때는 FROM 절 뒤에 WHERE 조건식 을 작성합니다.',
       "문자열 값을 비교할 때는 작은따옴표(')를 사용합니다: WHERE status = 'MISSING'",
@@ -144,7 +144,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       'SecurityLogs 테이블을 threat_score 내림차순(DESC)으로 정렬하고 LIMIT 3을 사용해 상위 3건만 조회하세요.',
     targetTables: ['SecurityLogs'],
     starterQuery:
-      '-- Thema 1 - Stufe 3: Zeige die Top-3 der gefährlichsten Sicherheits-Logs an.\nSELECT * FROM SecurityLogs\nORDER BY threat_score DESC\nLIMIT 3;',
+      '-- Thema 1 - Stufe 3\n',
     hints: [
       '데이터를 큰 값부터 작은 값 순서(내림차순)로 정렬할 때는 ORDER BY 컬럼명 DESC 를 사용합니다.',
       '출력할 행의 개수를 제한할 때는 쿼리 마지막에 LIMIT 개수 를 붙입니다.',
@@ -212,7 +212,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       "UPDATE 문을 사용하여 Citizens 테이블에서 citizen_id = 1004 인 행의 status 값을 'SUSPECT'로 수정하세요.",
     targetTables: ['Citizens', 'SecurityLogs'],
     starterQuery:
-      "-- Thema 1 - Stufe 4: Setze den Status von Jhin (ID 1004) auf SUSPECT.\nUPDATE Citizens\nSET status = 'SUSPECT'\nWHERE citizen_id = 1004;",
+      '-- Thema 1 - Stufe 4\n',
     hints: [
       '기존 데이터를 수정할 때는 UPDATE 테이블명 SET 컬럼 = 값 WHERE 조건; 문법을 사용합니다.',
       'WHERE 절을 생략하면 모든 시민의 상태가 바뀌어버리니 반드시 WHERE citizen_id = 1004 를 지정하세요!',
@@ -268,7 +268,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       'Transactions 테이블에서 sender_id 별로 GROUP BY 하여 sender_id, 거래 건수(COUNT), 총 송금액(SUM(amount))을 조회하세요.',
     targetTables: ['Transactions'],
     starterQuery:
-      '-- Thema 1 - Stufe 5: Berechne Anzahl und Gesamtsumme der Überweisungen pro Absender.\nSELECT sender_id, COUNT(*) AS tx_count, SUM(amount) AS total_sent\nFROM Transactions\nGROUP BY sender_id;',
+      '-- Thema 1 - Stufe 5\n',
     hints: [
       '특정 컬럼을 기준으로 묶어서 통계를 낼 때는 GROUP BY 컬럼명 을 사용합니다.',
       '건수는 COUNT(*), 합계는 SUM(amount) 집계 함수를 SELECT 절에 넣습니다.',
@@ -336,7 +336,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       "Citizens 테이블에서 clearance_level이 4 이상이고 status가 'ACTIVE'인 시민들을 WHERE ... AND ... 조건으로 조회하세요.",
     targetTables: ['Citizens'],
     starterQuery:
-      "-- Thema 2 - Stufe 1: Finde aktive Insider mit Sicherheitsfreigabe >= 4.\nSELECT * FROM Citizens\nWHERE clearance_level >= 4 AND status = 'ACTIVE';",
+      '-- Thema 2 - Stufe 1\n',
     hints: [
       '여러 조건을 동시에 만족해야 할 때는 WHERE 조건1 AND 조건2 문법을 사용합니다.',
       "숫자 비교는 clearance_level >= 4, 문자열 비교는 status = 'ACTIVE' 로 작성합니다.",
@@ -397,7 +397,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       'Transactions 테이블에서 amount >= 50000 인 거래를 amount 기준 내림차순(DESC)으로 정렬하고 상위 3건(LIMIT 3)만 조회하세요.',
     targetTables: ['Transactions'],
     starterQuery:
-      '-- Thema 2 - Stufe 2: Finde die 3 höchsten Transaktionen über 50.000 Credits.\nSELECT * FROM Transactions\nWHERE amount >= 50000\nORDER BY amount DESC\nLIMIT 3;',
+      '-- Thema 2 - Stufe 2\n',
     hints: [
       'WHERE 절로 50,000 이상의 거래를 먼저 거릅니다: WHERE amount >= 50000',
       '그 후 ORDER BY amount DESC 로 큰 금액부터 정렬하고, 마지막에 LIMIT 3 을 붙입니다.',
@@ -466,7 +466,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       'Transactions 테이블에서 receiver_id 별로 GROUP BY 하여 receiver_id, 거래 건수(COUNT), 총 수신액(SUM(amount))을 조회하세요.',
     targetTables: ['Transactions'],
     starterQuery:
-      '-- Thema 2 - Stufe 3: Zähle Transaktionen und Gesamtsumme pro Empfängerkonto.\nSELECT receiver_id, COUNT(*) AS tx_count, SUM(amount) AS total_received\nFROM Transactions\nGROUP BY receiver_id;',
+      '-- Thema 2 - Stufe 3\n',
     hints: [
       'sender_id 대신 receiver_id 컬럼을 기준으로 GROUP BY 절을 작성합니다.',
       'SELECT 절에는 receiver_id, COUNT(*), SUM(amount) 를 명시합니다.',
@@ -529,7 +529,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       "UPDATE 문을 사용하여 Citizens 테이블에서 citizen_id = 1008 인 행의 status 값을 'FROZEN'으로 수정하세요.",
     targetTables: ['Citizens'],
     starterQuery:
-      "-- Thema 2 - Stufe 4: Friere das Konto des Hauptverdächtigen Zed ein.\nUPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
+      '-- Thema 2 - Stufe 4\n',
     hints: [
       'UPDATE Citizens SET status = ... WHERE citizen_id = 1008; 구조를 사용합니다.',
       "지정할 상태 값은 작은따옴표로 감싼 'FROZEN' 입니다.",
@@ -586,7 +586,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       'Citizens와 Organizations 테이블을 org_id 기준으로 JOIN하여 시민 이름(Citizens.name), 역할(Citizens.role), 소속 기관명(Organizations.name)을 조회하세요.',
     targetTables: ['Citizens', 'Organizations'],
     starterQuery:
-      '-- Thema 2 - Stufe 5: Verknüpfe Bürgerdaten mit Organisationen über JOIN.\nSELECT Citizens.name, Citizens.role, Organizations.name AS org_name\nFROM Citizens\nJOIN Organizations ON Citizens.org_id = Organizations.org_id;',
+      '-- Thema 2 - Stufe 5\n',
     hints: [
       '두 테이블의 공통 연결 키는 org_id 입니다: ON Citizens.org_id = Organizations.org_id',
       'SELECT 절에 Citizens.name, Citizens.role, Organizations.name 을 명시합니다.',
