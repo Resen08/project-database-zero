@@ -351,16 +351,22 @@ export const App: React.FC = () => {
           onStartNewGame={() => {
             sqlEngine.resetDatabase();
             refreshSchemas();
-            const fresh = getDefaultSaveState();
+            const fresh: SaveState = {
+              ...getDefaultSaveState(),
+              settings: {
+                ...getDefaultSaveState().settings,
+                language: lang,
+              },
+            };
             setSaveState(fresh);
             saveGameState(fresh);
-            setEditorQuery(CURRICULUM_MISSIONS[0].starterQuery);
+            setEditorQuery(getMissionI18n(1, lang).starterQuery);
             setQueryResult(null);
             setMissionValidation(null);
             setActiveNavTab('console');
           }}
           onContinueGame={() => {
-            setEditorQuery(currentMission.starterQuery);
+            setEditorQuery(getMissionI18n(currentMission.missionId, lang).starterQuery);
             setActiveNavTab('console');
           }}
           onSelectMissionDirect={(mId) => {
@@ -556,9 +562,15 @@ export const App: React.FC = () => {
           clearSavedGame();
           sqlEngine.resetDatabase();
           refreshSchemas();
-          const fresh = getDefaultSaveState();
+          const fresh: SaveState = {
+            ...getDefaultSaveState(),
+            settings: {
+              ...getDefaultSaveState().settings,
+              language: lang,
+            },
+          };
           setSaveState(fresh);
-          setEditorQuery(CURRICULUM_MISSIONS[0].starterQuery);
+          setEditorQuery(getMissionI18n(1, lang).starterQuery);
           setQueryResult(null);
           setMissionValidation(null);
           setIsSettingsModalOpen(false);
