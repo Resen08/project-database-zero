@@ -133,16 +133,16 @@ INSERT INTO Locations (location_id, sector_code, name, district, security_level,
   (106, 'SEC-06', '스카이원 거주 단지', '어퍼 시티', 3, 4);
 
 INSERT INTO Citizens (citizen_id, citizen_code, name, role, clearance_level, org_id, home_location_id, status, credit_balance) VALUES
-  (1001, 'CTZ-001', '아리아 첸 (Aria Chen)', '수석 데이터 분석팀장', 5, 1, 106, 'ACTIVE', 42000),
-  (1002, 'CTZ-002', '카일 반스 (Kyle Vance)', '시스템 보안 감독관', 4, 1, 106, 'ACTIVE', 31500),
-  (1003, 'CTZ-003', '엘레나 송 (Dr. Elena Song)', '수석 DB 아키텍트', 5, 2, 106, 'MISSING', 18000),
-  (1004, 'CTZ-004', '마커스 진 (Marcus Jin)', '코어 시스템 엔지니어', 4, 2, 106, 'ACTIVE', 95000),
-  (1005, 'CTZ-005', '빅터 크로우 (Viktor Crow)', '암호화폐 브로커', 2, 5, 105, 'WATCHLIST', 128000),
-  (1006, 'CTZ-006', '세라 김 (Sera Kim)', '금융 감사관', 4, 3, 106, 'ACTIVE', 54000),
-  (1007, 'CTZ-007', '노아 박 (Noah Park)', '야간 서버 관리자', 3, 2, 104, 'ACTIVE', 14200),
-  (1008, 'CTZ-008', '단테 제로 (Dante Zero)', '고스트 프로토콜 해커', 1, 5, 105, 'SUSPECT', 210000),
-  (1009, 'CTZ-009', '한나 리 (Hanna Lee)', '물류 보안 오퍼레이터', 2, 4, 104, 'ACTIVE', 23000),
-  (1010, 'CTZ-010', '이안 조 (Ian Cho)', '신입 데이터 수사관 (Player)', 3, 1, 106, 'ACTIVE', 12000);
+  (1001, 'CTZ-001', '아리 (Ahri)', '수석 데이터 분석팀장', 5, 1, 106, 'ACTIVE', 42000),
+  (1002, 'CTZ-002', '제이스 (Jayce)', '시스템 보안 감독관', 4, 1, 106, 'ACTIVE', 31500),
+  (1003, 'CTZ-003', '하이머딩거 (Dr. Heimerdinger)', '수석 DB 아키텍트', 5, 2, 106, 'MISSING', 18000),
+  (1004, 'CTZ-004', '진 (Jhin)', '코어 시스템 엔지니어', 4, 2, 106, 'ACTIVE', 95000),
+  (1005, 'CTZ-005', '빅토르 (Viktor)', '암호화폐 브로커', 2, 5, 105, 'WATCHLIST', 128000),
+  (1006, 'CTZ-006', '세라핀 (Seraphine)', '금융 감사관', 4, 3, 106, 'ACTIVE', 54000),
+  (1007, 'CTZ-007', '에코 (Ekko)', '야간 서버 관리자', 3, 2, 104, 'ACTIVE', 14200),
+  (1008, 'CTZ-008', '제드 (Zed)', '고스트 프로토콜 해커', 1, 5, 105, 'SUSPECT', 210000),
+  (1009, 'CTZ-009', '애쉬 (Ashe)', '물류 보안 오퍼레이터', 2, 4, 104, 'ACTIVE', 23000),
+  (1010, 'CTZ-010', '이즈리얼 (Ezreal)', '신입 데이터 수사관 (Player)', 3, 1, 106, 'ACTIVE', 12000);
 
 INSERT INTO Transactions (tx_id, tx_hash, sender_id, receiver_id, location_id, amount, tx_type, timestamp, is_flagged) VALUES
   (501, 'TX-88A1', 1006, 1001, 103, 3500, 'AUDIT_FEE', '2086-11-01 09:15:00', 0),
@@ -178,9 +178,9 @@ INSERT INTO Missions (mission_id, chapter_id, stage_order, code_name, title, sql
   (10, 3, 10, 'OP-10-APP-JOIN', '시민과 소속 기관 교차 검증', 'INNER JOIN 교차 대조', 'LOCKED', 400);
 
 INSERT INTO Evidence (evidence_id, evidence_code, title, category, mission_id, related_citizen_id, summary, is_unlocked, discovered_at) VALUES
-  (1, 'EV-001', '엘레나 송 박사의 마지막 백업 로그', 'SYSTEM_LOG', 1, 1003, '실종 직전 제1양자서버실에서 스냅샷을 남긴 기록 확인', 1, '2086-11-02 02:30:00'),
-  (2, 'EV-002', '엘레나 송 실종 경보 파일', 'PERSONNEL', 2, 1003, '보안 등급 5등급 수석 아키텍트 엘레나 송(citizen_id: 1003)이 실종(MISSING) 상태임이 확인됨', 0, '2086-11-02 02:45:00'),
+  (1, 'EV-001', 'Dr. 하이머딩거의 마지막 백업 로그', 'SYSTEM_LOG', 1, 1003, '실종 직전 제1양자서버실에서 스냅샷을 남긴 기록 확인', 1, '2086-11-02 02:30:00'),
+  (2, 'EV-002', 'Dr. 하이머딩거 실종 경보 파일', 'PERSONNEL', 2, 1003, '보안 등급 5등급 수석 아키텍트 Dr. 하이머딩거(citizen_id: 1003)가 실종(MISSING) 상태임이 확인됨', 0, '2086-11-02 02:45:00'),
   (3, 'EV-003', 'TERM-H02 코어 테이블 유출 흔적', 'SECURITY', 3, 1004, '위협 점수 90점 이상의 심야 로그 중 코어 테이블 반출(CORE_TABLE_EXPORT) 정황 포착', 0, '2086-11-02 03:00:00'),
-  (4, 'EV-004', '마커스 진의 다크풀 자금 송금 내역', 'FINANCIAL', 5, 1004, '마커스 진(1004)이 총 3건, 합계 162,000 크레딧의 비정상 자금을 외부로 이체함', 0, '2086-11-02 03:30:00'),
-  (5, 'EV-005', '헬리오스 연구소 내부자-널 시퀀스 결탁 증거', 'CONSPIRACY', 6, 1004, 'JOIN 분석 결과 헬리오스 소속 마커스 진과 널 시퀀스 소속 단테 제로의 공동 작전 확인', 0, '2086-11-02 04:00:00');
+  (4, 'EV-004', '진의 다크풀 자금 송금 내역', 'FINANCIAL', 5, 1004, '진(1004)이 총 3건, 합계 162,000 크레딧의 비정상 자금을 외부로 이체함', 0, '2086-11-02 03:30:00'),
+  (5, 'EV-005', '헬리오스 연구소 내부자-널 시퀀스 결탁 증거', 'CONSPIRACY', 6, 1004, 'JOIN 분석 결과 헬리오스 소속 진과 널 시퀀스 소속 제드의 공동 작전 확인', 0, '2086-11-02 04:00:00');
 `;

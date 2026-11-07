@@ -123,11 +123,11 @@ export const MainMenu: React.FC<MainMenuProps> = ({
             }}
           />
 
-          {/* 좌측: 신입 데이터 수사관 이안 조 워크스테이션 */}
+          {/* 좌측: 신입 데이터 수사관 이즈리얼 워크스테이션 */}
           <div className="hero-station-left">
             <div className="agent-badge-tag">
               <span className="agent-status-dot" />
-              <span>INVESTIGATOR IAN</span>
+              <span>INVESTIGATOR EZREAL</span>
             </div>
             <div className="hero-terminal-unit">
               <div
@@ -157,12 +157,12 @@ export const MainMenu: React.FC<MainMenuProps> = ({
             <p className="hero-sub-meta">{t.appSubheadline}</p>
           </div>
 
-          {/* 우측: 수석 데이터 분석관 아리아 첸 서버 랙 & 말풍선 */}
+          {/* 우측: 수석 데이터 분석관 아리 서버 랙 & 말풍선 */}
           <div className="hero-station-right">
             <div className="aria-speech-bubble">
               <span className="speech-pulse-dot" />
               <div className="speech-body">
-                <span className="speech-author">CHIEF ANALYST ARIA</span>
+                <span className="speech-author">CHIEF ANALYST AHRI</span>
                 <p>{t.ariaSpeech}</p>
               </div>
             </div>

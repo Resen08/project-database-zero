@@ -18,7 +18,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
     sqlConcept: '1단계: SELECT / FROM',
     conceptBadge: 'SELECT · FROM',
     briefing:
-      '신입 데이터 수사관 이안 조, 아이기스 수사국에 합류한 것을 환영합니다. 오늘 새벽 헬리오스 코어 연구소에서 대규모 데이터 유출 경보가 발생했습니다. 먼저 중앙 데이터베이스가 정상 작동하는지 확인하기 위해 시민 명부(`Citizens`) 테이블의 모든 데이터를 조회하세요.',
+      '신입 데이터 수사관 이즈리얼, 아이기스 수사국에 합류한 것을 환영합니다. 오늘 새벽 헬리오스 코어 연구소에서 대규모 데이터 유출 경보가 발생했습니다. 먼저 중앙 데이터베이스가 정상 작동하는지 확인하기 위해 시민 명부(`Citizens`) 테이블의 모든 데이터를 조회하세요.',
     objectiveSummary:
       'Citizens 테이블의 모든 컬럼과 모든 행(10명)을 조회하는 SELECT 쿼리를 작성하고 실행하세요.',
     targetTables: ['Citizens'],
@@ -35,10 +35,10 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm1-win-1',
         speakerId: 'aria',
-        speakerName: '아리아 첸 팀장',
+        speakerName: '아리 팀장',
         speakerRole: '수석 데이터 분석팀장',
         avatarType: 'aria',
-        text: '좋아요! Citizens 테이블의 10명 명단이 정상적으로 출력되었군요. 잠깐, 3번 시민인 엘레나 송(Dr. Elena Song) 박사의 상태(status) 컬럼을 보세요... MISSING(실종)으로 바뀌어 있어요!',
+        text: '좋아요! Citizens 테이블의 10명 명단이 정상적으로 출력되었군요. 잠깐, 3번 시민인 Dr. 하이머딩거(Dr. Heimerdinger)의 상태(status) 컬럼을 보세요... MISSING(실종)으로 바뀌어 있어요!',
         sqlTip: 'SELECT * FROM 테이블명 은 테이블의 전체 구조를 빠르게 파악할 때 가장 먼저 사용하는 기본 쿼리입니다.',
       },
     ],
@@ -78,12 +78,12 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
     sqlConcept: '2단계: WHERE 조건절',
     conceptBadge: 'WHERE · 조건 필터링',
     briefing:
-      '엘레나 송 박사는 헬리오스 양자서버실의 설계자입니다. 그녀가 실종된 시각, 보안 등급(clearance_level)이 4등급 이상인 내부자만 접근할 수 있는 구역에서 이상 신호가 잡혔습니다. 정확히 실종 상태(`status = \'MISSING\'`)인 시민 레코드를 `WHERE` 절로 찾아내세요.',
+      'Dr. 하이머딩거는 헬리오스 양자서버실의 설계자입니다. 그가 실종된 시각, 보안 등급(clearance_level)이 4등급 이상인 내부자만 접근할 수 있는 구역에서 이상 신호가 잡혔습니다. 정확히 실종 상태(`status = \'MISSING\'`)인 시민 레코드를 `WHERE` 절로 찾아내세요.',
     objectiveSummary:
       "Citizens 테이블에서 WHERE 절을 사용하여 status 컬럼 값이 'MISSING'인 시민을 조회하세요.",
     targetTables: ['Citizens'],
     starterQuery:
-      "-- Thema 1 - Stufe 2: Suche nach der vermissten Dr. Elena Song (status = 'MISSING').\nSELECT * FROM Citizens\nWHERE status = 'MISSING';",
+      "-- Thema 1 - Stufe 2: Suche nach der vermissten Dr. Heimerdinger (status = 'MISSING').\nSELECT * FROM Citizens\nWHERE status = 'MISSING';",
     hints: [
       '특정 조건에 맞는 행만 골라낼 때는 FROM 절 뒤에 WHERE 조건식 을 작성합니다.',
       "문자열 값을 비교할 때는 작은따옴표(')를 사용합니다: WHERE status = 'MISSING'",
@@ -96,10 +96,10 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm2-win-1',
         speakerId: 'kyle',
-        speakerName: '카일 반스 감독관',
+        speakerName: '제이스 감독관',
         speakerRole: '시스템 보안 감독관',
         avatarType: 'kyle',
-        text: '확실하군. 고유번호 1003번, 엘레나 송 박사(Dr. Elena Song). 보안 등급 5등급 아키텍트가 어젯밤 서버실 백업 직후 자취를 감췄어. 이제 그 시간대 보안 로그를 뒤져봐야겠어.',
+        text: '확실하군. 고유번호 1003번, Dr. 하이머딩거(Dr. Heimerdinger). 보안 등급 5등급 아키텍트가 어젯밤 서버실 백업 직후 자취를 감췄어. 이제 그 시간대 보안 로그를 뒤져봐야겠어.',
         sqlTip: "WHERE 절에서는 =, !=, >, <, >=, <= 연산자와 AND, OR, IN, LIKE 등을 조합해 원하는 데이터만 정밀하게 추출할 수 있습니다.",
       },
     ],
@@ -111,18 +111,18 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       if (!q.includes('WHERE')) {
         return { passed: false, feedback: '반드시 WHERE 절을 사용하여 조건을 지정해야 합니다.' };
       }
-      const hasElena = userResult.rows.some((r) =>
-        r.some((cell) => String(cell).includes('엘레나 송') || String(cell) === 'CTZ-003' || String(cell) === '1003')
+      const hasHeimerdinger = userResult.rows.some((r) =>
+        r.some((cell) => String(cell).includes('하이머딩거') || String(cell).includes('Heimerdinger') || String(cell).includes('엘레나 송') || String(cell) === 'CTZ-003' || String(cell) === '1003')
       );
-      if (userResult.rows.length !== 1 || !hasElena) {
+      if (userResult.rows.length !== 1 || !hasHeimerdinger) {
         return {
           passed: false,
-          feedback: "조회 결과에 실종자(status = 'MISSING')인 엘레나 송 박사 1명만 정확히 출력되어야 합니다.",
+          feedback: "조회 결과에 실종자(status = 'MISSING')인 Dr. 하이머딩거 1명만 정확히 출력되어야 합니다.",
         };
       }
       return {
         passed: true,
-        feedback: "정확합니다! WHERE status = 'MISSING' 조건으로 실종된 수석 아키텍트 엘레나 송 박사의 레코드를 특정했습니다.",
+        feedback: "정확합니다! WHERE status = 'MISSING' 조건으로 실종된 수석 아키텍트 Dr. 하이머딩거의 레코드를 특정했습니다.",
       };
     },
   },
@@ -157,7 +157,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm3-win-1',
         speakerId: 'aria',
-        speakerName: '아리아 첸 팀장',
+        speakerName: '아리 팀장',
         speakerRole: '수석 데이터 분석팀장',
         avatarType: 'aria',
         text: '상위 3건의 위협 로그를 보세요! log_id 9009번은 해커가 남긴 가짜 노이즈 로그이고, 9004번(citizen_id: 1008)과 9005번(citizen_id: 1004, CORE_TABLE_EXPORT)이 실제 범행 흔적이에요!',
@@ -207,12 +207,12 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
     sqlConcept: '4단계: UPDATE',
     conceptBadge: 'UPDATE · 상태 갱신',
     briefing:
-      '방금 발견한 `SecurityLogs`의 9005번 로그(`CORE_TABLE_EXPORT`)를 일으킨 인물은 `citizen_id = 1004` (마커스 진, 코어 시스템 엔지니어)입니다! `Citizens` 테이블에서 마커스 진(`citizen_id = 1004`)의 상태(`status`)를 `UPDATE` 문을 사용해 `\'SUSPECT\'`(용의자)로 변경하세요!',
+      '방금 발견한 `SecurityLogs`의 9005번 로그(`CORE_TABLE_EXPORT`)를 일으킨 인물은 `citizen_id = 1004` (진, 코어 시스템 엔지니어)입니다! `Citizens` 테이블에서 진(`citizen_id = 1004`)의 상태(`status`)를 `UPDATE` 문을 사용해 `\'SUSPECT\'`(용의자)로 변경하세요!',
     objectiveSummary:
       "UPDATE 문을 사용하여 Citizens 테이블에서 citizen_id = 1004 인 행의 status 값을 'SUSPECT'로 수정하세요.",
     targetTables: ['Citizens', 'SecurityLogs'],
     starterQuery:
-      "-- Thema 1 - Stufe 4: Setze den Status von Marcus Jin (ID 1004) auf SUSPECT.\nUPDATE Citizens\nSET status = 'SUSPECT'\nWHERE citizen_id = 1004;",
+      "-- Thema 1 - Stufe 4: Setze den Status von Jhin (ID 1004) auf SUSPECT.\nUPDATE Citizens\nSET status = 'SUSPECT'\nWHERE citizen_id = 1004;",
     hints: [
       '기존 데이터를 수정할 때는 UPDATE 테이블명 SET 컬럼 = 값 WHERE 조건; 문법을 사용합니다.',
       'WHERE 절을 생략하면 모든 시민의 상태가 바뀌어버리니 반드시 WHERE citizen_id = 1004 를 지정하세요!',
@@ -224,10 +224,10 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm4-win-1',
         speakerId: 'kyle',
-        speakerName: '카일 반스 감독관',
+        speakerName: '제이스 감독관',
         speakerRole: '시스템 보안 감독관',
         avatarType: 'kyle',
-        text: '마커스 진(citizen_id: 1004)을 공식 용의자(SUSPECT)로 전환 완료했군! 이제 마커스 진이 데이터를 빼돌린 대가로 뒷돈을 얼마나 챙겼는지 금융 거래(`Transactions`)를 추적하자.',
+        text: '진(citizen_id: 1004)을 공식 용의자(SUSPECT)로 전환 완료했군! 이제 진이 데이터를 빼돌린 대가로 뒷돈을 얼마나 챙겼는지 금융 거래(`Transactions`)를 추적하자.',
         sqlTip: 'UPDATE와 DELETE를 실행할 때는 항상 WHERE 조건절이 정확한지 먼저 확인하는 습관이 필수적입니다.',
       },
     ],
@@ -241,12 +241,12 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       if (currentStatus !== 'SUSPECT') {
         return {
           passed: false,
-          feedback: `현재 citizen_id = 1004(마커스 진)의 status 값은 '${currentStatus}'입니다. UPDATE 문을 실행해 'SUSPECT'로 변경하세요.`,
+          feedback: `현재 citizen_id = 1004(진)의 status 값은 '${currentStatus}'입니다. UPDATE 문을 실행해 'SUSPECT'로 변경하세요.`,
         };
       }
       return {
         passed: true,
-        feedback: "성공적으로 데이터베이스를 조작했습니다! 마커스 진(citizen_id: 1004)의 상태가 'SUSPECT'로 갱신되었습니다.",
+        feedback: "성공적으로 데이터베이스를 조작했습니다! 진(citizen_id: 1004)의 상태가 'SUSPECT'로 갱신되었습니다.",
       };
     },
   },
@@ -282,10 +282,10 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm5-win-1',
         speakerId: 'aria',
-        speakerName: '아리아 첸 팀장',
+        speakerName: '아리 팀장',
         speakerRole: '수석 데이터 분석팀장',
         avatarType: 'aria',
-        text: '기초 튜토리얼을 훌륭하게 완수하셨습니다! sender_id 1004번(마커스 진)이 총 3건, 162,000 크레딧을 외부로 빼돌렸군요. 이제 테마 2에서 배운 지식을 스스로 응용하여 본격적인 실전 수사에 나설 차례입니다!',
+        text: '기초 튜토리얼을 훌륭하게 완수하셨습니다! sender_id 1004번(진)이 총 3건, 162,000 크레딧을 외부로 빼돌렸군요. 이제 테마 2에서 배운 지식을 스스로 응용하여 본격적인 실전 수사에 나설 차례입니다!',
         sqlTip: 'GROUP BY와 집계 함수(COUNT, SUM, AVG)를 결합하면 방대한 거래 기록도 단 몇 줄의 요약 통계표로 압축할 수 있습니다.',
       },
     ],
@@ -309,7 +309,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       }
       return {
         passed: true,
-        feedback: '정확한 집계입니다! 송금자 1004번(마커스 진)이 총 3건, 162,000 크레딧의 비정상 자금을 송금한 사실을 입증했습니다.',
+        feedback: '정확한 집계입니다! 송금자 1004번(진)이 총 3건, 162,000 크레딧의 비정상 자금을 송금한 사실을 입증했습니다.',
       };
     },
   },
@@ -331,7 +331,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
     sqlConcept: '응용 1단계: WHERE 다중 조건 (AND)',
     conceptBadge: 'WHERE · 복합 조건',
     briefing:
-      '기초 튜토리얼을 마친 이안 수사관, 이제 실전 응용 수사입니다! 헬리오스 서버실 사건 당시 출입 인가권을 가진 인물 중, 높은 보안 등급(`clearance_level >= 4`)을 가졌으면서 현재 활동 중(`status = \'ACTIVE\'`)인 고위험 시민들을 모두 추려내세요. 단일 조건이 아닌 `AND` 연산자를 응용해 두 조건을 동시에 만족하는 대상자들을 추출하세요.',
+      '기초 튜토리얼을 마친 이즈리얼 수사관, 이제 실전 응용 수사입니다! 헬리오스 서버실 사건 당시 출입 인가권을 가진 인물 중, 높은 보안 등급(`clearance_level >= 4`)을 가졌으면서 현재 활동 중(`status = \'ACTIVE\'`)인 고위험 시민들을 모두 추려내세요. 단일 조건이 아닌 `AND` 연산자를 응용해 두 조건을 동시에 만족하는 대상자들을 추출하세요.',
     objectiveSummary:
       "Citizens 테이블에서 clearance_level이 4 이상이고 status가 'ACTIVE'인 시민들을 WHERE ... AND ... 조건으로 조회하세요.",
     targetTables: ['Citizens'],
@@ -349,10 +349,10 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm6-win-1',
         speakerId: 'aria',
-        speakerName: '아리아 첸 팀장',
+        speakerName: '아리 팀장',
         speakerRole: '수석 데이터 분석팀장',
         avatarType: 'aria',
-        text: '완벽한 조건 조합입니다! 보안 등급 4 이상이면서 ACTIVE 상태인 인물들이 정밀하게 추출되었어요. 카일 감독관과 세라 감사관, 그리고 마커스 진이 명단에 있군요. 이들의 금융 거래를 교차 확인해야 합니다.',
+        text: '완벽한 조건 조합입니다! 보안 등급 4 이상이면서 ACTIVE 상태인 인물들이 정밀하게 추출되었어요. 제이스 감독관과 세라핀 감사관, 그리고 진이 명단에 있군요. 이들의 금융 거래를 교차 확인해야 합니다.',
         sqlTip: '실무에서는 여러 보안 조건을 AND 또는 OR로 결합해 정밀한 표적 집단을 신속하게 추출합니다.',
       },
     ],
@@ -411,7 +411,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm7-win-1',
         speakerId: 'kyle',
-        speakerName: '카일 반스 감독관',
+        speakerName: '제이스 감독관',
         speakerRole: '시스템 보안 감독관',
         avatarType: 'kyle',
         text: '거래 내역 상위 3건을 봐! 80,000 크레딧, 65,000 크레딧, 52,000 크레딧... 엄청난 액수의 자금이 한곳으로 흘러들어가고 있어. 이 돈을 받아 챙긴 수신자가 누구인지 집계해야 한다.',
@@ -480,10 +480,10 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm8-win-1',
         speakerId: 'aria',
-        speakerName: '아리아 첸 팀장',
+        speakerName: '아리 팀장',
         speakerRole: '수석 데이터 분석팀장',
         avatarType: 'aria',
-        text: '수신 집계표가 명백한 증거를 보여줍니다! receiver_id 1008번이 총 145,000 크레딧을 받아 챙겼어요. 이 인물은 널 시퀀스의 전문 해커 단테 제로입니다! 당장 계좌를 동결해야 해요.',
+        text: '수신 집계표가 명백한 증거를 보여줍니다! receiver_id 1008번이 총 145,000 크레딧을 받아 챙겼어요. 이 인물은 널 시퀀스의 전문 해커 제드입니다! 당장 계좌를 동결해야 해요.',
         sqlTip: '거래 데이터에서 송신자와 수신자 양방향을 모두 GROUP BY로 분석하면 자금의 발원지와 종착지를 완벽히 추적할 수 있습니다.',
       },
     ],
@@ -507,7 +507,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       }
       return {
         passed: true,
-        feedback: '정확한 수신 통계 분석입니다! 1008번 단테 제로가 145,000 크레딧을 챙긴 수신 거점임을 확인했습니다.',
+        feedback: '정확한 수신 통계 분석입니다! 1008번 제드가 145,000 크레딧을 챙긴 수신 거점임을 확인했습니다.',
       };
     },
   },
@@ -524,12 +524,12 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
     sqlConcept: '응용 4단계: 조건부 UPDATE',
     conceptBadge: 'UPDATE · 자산 동결',
     briefing:
-      '수신 자금 집계 결과, 고스트 프로토콜 해커 단테 제로(`citizen_id = 1008`)에게 145,000 크레딧의 거액이 집중 수신된 것이 확인되었습니다. 추가적인 데이터 탈취와 자금 세탁을 막기 위해, `UPDATE` 문을 실행하여 `citizen_id = 1008`인 시민의 `status`를 `\'FROZEN\'`(자산 동결)으로 즉각 변경하세요!',
+      '수신 자금 집계 결과, 고스트 프로토콜 해커 제드(`citizen_id = 1008`)에게 145,000 크레딧의 거액이 집중 수신된 것이 확인되었습니다. 추가적인 데이터 탈취와 자금 세탁을 막기 위해, `UPDATE` 문을 실행하여 `citizen_id = 1008`인 시민의 `status`를 `\'FROZEN\'`(자산 동결)으로 즉각 변경하세요!',
     objectiveSummary:
       "UPDATE 문을 사용하여 Citizens 테이블에서 citizen_id = 1008 인 행의 status 값을 'FROZEN'으로 수정하세요.",
     targetTables: ['Citizens'],
     starterQuery:
-      "-- Thema 2 - Stufe 4: Friere das Konto des Hauptverdächtigen Dante Zero ein.\nUPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
+      "-- Thema 2 - Stufe 4: Friere das Konto des Hauptverdächtigen Zed ein.\nUPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
     hints: [
       'UPDATE Citizens SET status = ... WHERE citizen_id = 1008; 구조를 사용합니다.',
       "지정할 상태 값은 작은따옴표로 감싼 'FROZEN' 입니다.",
@@ -542,10 +542,10 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm9-win-1',
         speakerId: 'kyle',
-        speakerName: '카일 반스 감독관',
+        speakerName: '제이스 감독관',
         speakerRole: '시스템 보안 감독관',
         avatarType: 'kyle',
-        text: '단테 제로(1008)의 모든 계좌와 네트워크 접근 권한이 성공적으로 FROZEN(동결)되었다! 이제 외부와의 통신이 모두 차단됐다. 마지막으로 사건에 연루된 시민들과 조직들의 관계를 교차 검증하자.',
+        text: '제드(1008)의 모든 계좌와 네트워크 접근 권한이 성공적으로 FROZEN(동결)되었다! 이제 외부와의 통신이 모두 차단됐다. 마지막으로 사건에 연루된 시민들과 조직들의 관계를 교차 검증하자.',
         sqlTip: '사이버 보안 실무에서 조건부 UPDATE는 침해 계정을 즉시 격리하거나 비밀번호를 강제 만료시키는 긴급 방어 조치로 활용됩니다.',
       },
     ],
@@ -559,12 +559,12 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       if (currentStatus !== 'FROZEN') {
         return {
           passed: false,
-          feedback: `현재 citizen_id = 1008(단테 제로)의 status 값은 '${currentStatus}'입니다. UPDATE 문을 실행해 'FROZEN'으로 변경하세요.`,
+          feedback: `현재 citizen_id = 1008(제드)의 status 값은 '${currentStatus}'입니다. UPDATE 문을 실행해 'FROZEN'으로 변경하세요.`,
         };
       }
       return {
         passed: true,
-        feedback: "용의자 자산 동결 성공! 단테 제로(citizen_id: 1008)의 상태가 'FROZEN'으로 안전하게 잠겼습니다.",
+        feedback: "용의자 자산 동결 성공! 제드(citizen_id: 1008)의 상태가 'FROZEN'으로 안전하게 잠겼습니다.",
       };
     },
   },
@@ -581,7 +581,7 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
     sqlConcept: '응용 5단계: INNER JOIN 교차 검증',
     conceptBadge: 'INNER JOIN · 기관 대조',
     briefing:
-      '동결 조치 이후, 이안 수사관은 시민들의 소속 기관 배후를 전면 파악하고자 합니다. `Citizens` 테이블과 `Organizations` 테이블을 `org_id` 외래키로 결합(`JOIN`)하여, 각 시민의 **이름(`Citizens.name`)**, **역할(`Citizens.role`)**, **소속 기관명(`Organizations.name`)**을 한눈에 결합 조회하여 사건의 전모를 밝혀내세요!',
+      '동결 조치 이후, 이즈리얼 수사관은 시민들의 소속 기관 배후를 전면 파악하고자 합니다. `Citizens` 테이블과 `Organizations` 테이블을 `org_id` 외래키로 결합(`JOIN`)하여, 각 시민의 **이름(`Citizens.name`)**, **역할(`Citizens.role`)**, **소속 기관명(`Organizations.name`)**을 한눈에 결합 조회하여 사건의 전모를 밝혀내세요!',
     objectiveSummary:
       'Citizens와 Organizations 테이블을 org_id 기준으로 JOIN하여 시민 이름(Citizens.name), 역할(Citizens.role), 소속 기관명(Organizations.name)을 조회하세요.',
     targetTables: ['Citizens', 'Organizations'],
@@ -600,10 +600,10 @@ export const CURRICULUM_MISSIONS: SqlMission[] = [
       {
         id: 'm10-win-1',
         speakerId: 'aria',
-        speakerName: '아리아 첸 팀장',
+        speakerName: '아리 팀장',
         speakerRole: '수석 데이터 분석팀장',
         avatarType: 'aria',
-        text: '사건 전모가 완전히 밝혀졌습니다! 헬리오스 연구소의 마커스 진과 널 시퀀스의 단테 제로가 결탁한 전모를 이안 수사관님이 SQL만으로 완벽하게 규명하셨어요. 축하합니다! 테마 1 기초부터 테마 2 실전 응용까지 모든 수사를 성공적으로 완수하셨습니다!',
+        text: '사건 전모가 완전히 밝혀졌습니다! 헬리오스 연구소의 진과 널 시퀀스의 제드가 결탁한 전모를 이즈리얼 수사관님이 SQL만으로 완벽하게 규명하셨어요. 축하합니다! 테마 1 기초부터 테마 2 실전 응용까지 모든 수사를 성공적으로 완수하셨습니다!',
         sqlTip: '축하합니다! 1단계 기초 튜토리얼부터 2단계 실전 응용 수사까지, 관계형 데이터베이스의 핵심 SQL 기술을 완벽하게 마스터하셨습니다.',
       },
     ],

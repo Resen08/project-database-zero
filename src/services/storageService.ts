@@ -5,7 +5,7 @@ const STORAGE_KEY = 'PROJECT_DATABASE_ZERO_SAVE_V1';
 export function getDefaultSaveState(): SaveState {
   return {
     version: '1.0.0',
-    playerName: 'Ian Cho',
+    playerName: 'Ezreal',
     currentChapterId: 1,
     currentMissionId: 1,
     completedMissionIds: [],

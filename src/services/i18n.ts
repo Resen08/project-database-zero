@@ -203,7 +203,7 @@ export const GUIDEBOOK_DATA: Record<SupportedLanguage, GuidebookEntry[]> = {
       summary: 'Führe eine gezielte Statusänderung zur Gefahrenabwehr durch.',
       syntax: "UPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
       explanation: [
-        'Setzt den Kontostatus des Hauptverdächtigen Dante Zero (citizen_id 1008) auf FROZEN.',
+        'Setzt den Kontostatus des Hauptverdächtigen Zed (citizen_id 1008) auf FROZEN.',
         'Die WHERE-Klausel garantiert, dass ausschließlich die Zielperson gesperrt wird.',
         'Sofortige Blockierung unterbindet weitere unbefugte Transaktionen.',
       ],
@@ -367,7 +367,7 @@ export const GUIDEBOOK_DATA: Record<SupportedLanguage, GuidebookEntry[]> = {
       summary: '수사 결과 밝혀진 주범의 상태를 FROZEN으로 변경하여 추가 범행을 원천 차단합니다.',
       syntax: "UPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
       explanation: [
-        '시민 테이블(Citizens)에서 citizen_id = 1008(단테 제로)을 특정합니다.',
+        '시민 테이블(Citizens)에서 citizen_id = 1008(제드)을 특정합니다.',
         "SET status = 'FROZEN'으로 계정과 자산을 즉시 동결 처리합니다.",
         'WHERE 조건을 누락하면 전 시민의 계정이 동결되므로 조건 확인이 필수입니다.',
       ],
@@ -403,7 +403,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: 'Stufe 1: SELECT / FROM',
       conceptBadge: 'SELECT · FROM',
       briefing:
-        'Willkommen im Aegis-Datenermittlungsbüro, Nachwuchs-Ermittler Ian Cho. Heute früh wurde im Helios-Quantenserverlabor ein massiver Datenabfluss gemeldet. Bitte prüfe zunächst, ob die zentrale Datenbank ordnungsgemäß funktioniert, indem du alle Datensätze der Bürgertabelle (Citizens) abrufst.',
+        'Willkommen im Aegis-Datenermittlungsbüro, Nachwuchs-Ermittler Ezreal. Heute früh wurde im Helios-Quantenserverlabor ein massiver Datenabfluss gemeldet. Bitte prüfe zunächst, ob die zentrale Datenbank ordnungsgemäß funktioniert, indem du alle Datensätze der Bürgertabelle (Citizens) abrufst.',
       objectiveSummary:
         'Schreibe und führe eine SELECT-Abfrage aus, die alle Spalten und alle 10 Zeilen der Tabelle Citizens anzeigt.',
       starterQuery:
@@ -415,9 +415,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Leitende Analystin Aria Chen',
+          speakerName: 'Leitende Analystin Ahri',
           speakerRole: 'Leiterin Datenanalyse (Aegis Bureau)',
-          text: 'Hervorragend! Alle 10 Bürgerdaten werden korrekt angezeigt. Aber sieh dir Bürgerin Nr. 1003 an – Dr. Elena Song. Ihr Status steht auf MISSING (Vermisst)!',
+          text: 'Hervorragend! Alle 10 Bürgerdaten werden korrekt angezeigt. Aber sieh dir Bürgerin Nr. 1003 an – Dr. Heimerdinger. Ihr Status steht auf MISSING (Vermisst)!',
           sqlTip: 'SELECT * FROM tabellenname ist die wichtigste Basisabfrage zur ersten Erkundung einer unbekannten Tabelle.',
         },
       ],
@@ -427,11 +427,11 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: 'Stufe 2: WHERE Bedingung',
       conceptBadge: 'WHERE · Filter',
       briefing:
-        'Dr. Elena Song ist die Chef-Architektin des Quantenserverraums. Zum Zeitpunkt ihres Verschwindens gab es Alarmsignale aus Bereichen, die nur mit Sicherheitsfreigabe (clearance_level) 4 oder höher betreten werden dürfen. Finde mit einer WHERE-Klausel gezielt den Eintrag von Dr. Elena Song (status = \'MISSING\').',
+        'Dr. Heimerdinger ist die Chef-Architektin des Quantenserverraums. Zum Zeitpunkt ihres Verschwindens gab es Alarmsignale aus Bereichen, die nur mit Sicherheitsfreigabe (clearance_level) 4 oder höher betreten werden dürfen. Finde mit einer WHERE-Klausel gezielt den Eintrag von Dr. Heimerdinger (status = \'MISSING\').',
       objectiveSummary:
         "Filtere die Tabelle Citizens mit WHERE, sodass nur der Datensatz mit status = 'MISSING' ausgegeben wird.",
       starterQuery:
-        "-- Thema 1 - Stufe 2: Suche nach der vermissten Dr. Elena Song (status = 'MISSING').\nSELECT * FROM Citizens WHERE status = 'MISSING';",
+        "-- Thema 1 - Stufe 2: Suche nach der vermissten Dr. Heimerdinger (status = 'MISSING').\nSELECT * FROM Citizens WHERE status = 'MISSING';",
       hints: [
         'Bedingungen werden hinter FROM mit WHERE bedingung formuliert.',
         "Textwerte müssen in einfache Anführungszeichen gesetzt werden: WHERE status = 'MISSING'",
@@ -439,9 +439,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Sicherheitsinspektor Kyle Vance',
+          speakerName: 'Sicherheitsinspektor Jayce',
           speakerRole: 'Leiter Systemsicherheit',
-          text: 'Eindeutig. ID 1003, Dr. Elena Song. Sicherheitsfreigabe Stufe 5. Sie verschwand unmittelbar nach dem nächtlichen Server-Backup. Jetzt müssen wir die Sicherheitsprotokolle jener Nacht prüfen.',
+          text: 'Eindeutig. ID 1003, Dr. Heimerdinger. Sicherheitsfreigabe Stufe 5. Sie verschwand unmittelbar nach dem nächtlichen Server-Backup. Jetzt müssen wir die Sicherheitsprotokolle jener Nacht prüfen.',
           sqlTip: 'Mit der WHERE-Klausel lassen sich Bedingungen mit =, !=, >, <, >=, <=, AND und OR präzise steuern.',
         },
       ],
@@ -463,7 +463,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Leitende Analystin Aria Chen',
+          speakerName: 'Leitende Analystin Ahri',
           speakerRole: 'Leiterin Datenanalyse (Aegis Bureau)',
           text: 'Sieh dir die obersten 3 Logs an! Log 9009 ist ein gefälschtes Täuschungs-Log (SPOOFED_NOISE_LOG), aber Log 9004 (citizen_id 1008) und 9005 (citizen_id 1004, CORE_TABLE_EXPORT) sind reale Spuren der Tat!',
           sqlTip: 'ORDER BY spalte DESC LIMIT n wird täglich genutzt, um die neuesten oder kritischsten Sicherheitsvorfälle zu filtern.',
@@ -475,11 +475,11 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: 'Stufe 4: UPDATE',
       conceptBadge: 'UPDATE · Status',
       briefing:
-        'Das Log 9005 (CORE_TABLE_EXPORT) wurde durch citizen_id = 1004 (Marcus Jin, Core System Engineer) ausgelöst! Sein Status in der Tabelle Citizens steht jedoch noch auf ACTIVE. Führe ein UPDATE aus, um seinen Status auf \'SUSPECT\' zu setzen!',
+        'Das Log 9005 (CORE_TABLE_EXPORT) wurde durch citizen_id = 1004 (Jhin, Core System Engineer) ausgelöst! Sein Status in der Tabelle Citizens steht jedoch noch auf ACTIVE. Führe ein UPDATE aus, um seinen Status auf \'SUSPECT\' zu setzen!',
       objectiveSummary:
         "Aktualisiere mit UPDATE in Citizens den status auf 'SUSPECT' für den Bürger mit citizen_id = 1004.",
       starterQuery:
-        "-- Thema 1 - Stufe 4: Setze den Status von Marcus Jin (citizen_id: 1004) auf 'SUSPECT'.\nUPDATE Citizens\nSET status = 'SUSPECT'\nWHERE citizen_id = 1004;",
+        "-- Thema 1 - Stufe 4: Setze den Status von Jhin (citizen_id: 1004) auf 'SUSPECT'.\nUPDATE Citizens\nSET status = 'SUSPECT'\nWHERE citizen_id = 1004;",
       hints: [
         'Syntax für Datenänderungen: UPDATE tabellenname SET spalte = wert WHERE bedingung;',
         'Vergiss niemals die WHERE-Klausel: WHERE citizen_id = 1004',
@@ -487,9 +487,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Sicherheitsinspektor Kyle Vance',
+          speakerName: 'Sicherheitsinspektor Jayce',
           speakerRole: 'Leiter Systemsicherheit',
-          text: 'Marcus Jin (1004) ist nun offiziell als SUSPECT erfasst! Der Alarm im Sicherheitsnetzwerk ist aktiv. Jetzt verfolgen wir seine Finanzströme in Transactions.',
+          text: 'Jhin (1004) ist nun offiziell als SUSPECT erfasst! Der Alarm im Sicherheitsnetzwerk ist aktiv. Jetzt verfolgen wir seine Finanzströme in Transactions.',
           sqlTip: 'Führe vor einem UPDATE immer zuerst ein SELECT mit derselben WHERE-Bedingung aus, um versehentliche Massenänderungen zu verhindern.',
         },
       ],
@@ -511,9 +511,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Leitende Analystin Aria Chen',
+          speakerName: 'Leitende Analystin Ahri',
           speakerRole: 'Leiterin Datenanalyse (Aegis Bureau)',
-          text: 'Glückwunsch zum Abschluss von Thema 1! Absender 1004 (Marcus Jin) hat 3 Überweisungen über insgesamt 162.000 Credits getätigt. In Thema 2 wenden wir dieses Wissen nun auf echte Ermittlungsfälle an!',
+          text: 'Glückwunsch zum Abschluss von Thema 1! Absender 1004 (Jhin) hat 3 Überweisungen über insgesamt 162.000 Credits getätigt. In Thema 2 wenden wir dieses Wissen nun auf echte Ermittlungsfälle an!',
           sqlTip: 'GROUP BY fasst tausende Buchungszeilen zu übersichtlichen Kennzahlen zusammen.',
         },
       ],
@@ -535,7 +535,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Leitende Analystin Aria Chen',
+          speakerName: 'Leitende Analystin Ahri',
           speakerRole: 'Leiterin Datenanalyse (Aegis Bureau)',
           text: 'Präzise gefiltert! Wir haben die autorisierten Schlüsselpersonen isoliert. Nun prüfen wir die großen Überweisungen aus diesem Kreis.',
           sqlTip: 'AND verlangt, dass beide Bedingungen wahr sein müssen, was den Suchkreis exakt einschränkt.',
@@ -559,7 +559,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Sicherheitsinspektor Kyle Vance',
+          speakerName: 'Sicherheitsinspektor Jayce',
           speakerRole: 'Leiter Systemsicherheit',
           text: 'Drei gewaltige Transaktionen über 80.000, 65.000 und 52.000 Credits! Jetzt müssen wir herausfinden, wer das Geld empfangen hat.',
           sqlTip: 'Die Reihenfolge der SQL-Klauseln lautet: SELECT -> FROM -> WHERE -> ORDER BY -> LIMIT.',
@@ -583,9 +583,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Leitende Analystin Aria Chen',
+          speakerName: 'Leitende Analystin Ahri',
           speakerRole: 'Leiterin Datenanalyse (Aegis Bureau)',
-          text: 'Das Empfänger-Ranking ist eindeutig! Empfänger 1008 hat insgesamt 145.000 Credits erhalten. Dahinter steckt der berüchtigte Hacker Dante Zero! Sein Konto muss sofort gesperrt werden.',
+          text: 'Das Empfänger-Ranking ist eindeutig! Empfänger 1008 hat insgesamt 145.000 Credits erhalten. Dahinter steckt der berüchtigte Hacker Zed! Sein Konto muss sofort gesperrt werden.',
           sqlTip: 'Durch den Wechsel der Gruppierungsachse von Absender zu Empfänger lassen sich kriminelle Geldsenken sofort entlarven.',
         },
       ],
@@ -595,11 +595,11 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: 'Angewandt 4: Gezieltes UPDATE (FROZEN)',
       conceptBadge: 'UPDATE · Konto-Sperre',
       briefing:
-        'Hacker Dante Zero (citizen_id = 1008) ist die zentrale Zielperson des Geldflusses. Führe ein UPDATE auf der Tabelle Citizens aus, um seinen Status auf \'FROZEN\' (Eingefroren) zu setzen und weitere Systemmanipulationen zu verhindern!',
+        'Hacker Zed (citizen_id = 1008) ist die zentrale Zielperson des Geldflusses. Führe ein UPDATE auf der Tabelle Citizens aus, um seinen Status auf \'FROZEN\' (Eingefroren) zu setzen und weitere Systemmanipulationen zu verhindern!',
       objectiveSummary:
         "Setze in Citizens mit UPDATE den status auf 'FROZEN' für den Bürger mit citizen_id = 1008.",
       starterQuery:
-        "-- Thema 2 - Stufe 4: Sperre das Konto des Verdächtigen Dante Zero (citizen_id: 1008).\nUPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
+        "-- Thema 2 - Stufe 4: Sperre das Konto des Verdächtigen Zed (citizen_id: 1008).\nUPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
       hints: [
         'Syntax: UPDATE Citizens SET status = ... WHERE citizen_id = 1008;',
         "Setze den Textwert 'FROZEN' in einfache Anführungszeichen.",
@@ -607,9 +607,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Sicherheitsinspektor Kyle Vance',
+          speakerName: 'Sicherheitsinspektor Jayce',
           speakerRole: 'Leiter Systemsicherheit',
-          text: 'Konto und Zugriff von Dante Zero (1008) wurden eingefroren! Seine Verbindung ist gekappt. Als letzten Schritt müssen wir Bürger und Organisationen abgleichen.',
+          text: 'Konto und Zugriff von Zed (1008) wurden eingefroren! Seine Verbindung ist gekappt. Als letzten Schritt müssen wir Bürger und Organisationen abgleichen.',
           sqlTip: 'In der Cybersicherheit dient gezieltes UPDATE dazu, kompromittierte Konten in Sekundenschnelle zu isolieren.',
         },
       ],
@@ -631,9 +631,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: 'Leitende Analystin Aria Chen',
+          speakerName: 'Leitende Analystin Ahri',
           speakerRole: 'Leiterin Datenanalyse (Aegis Bureau)',
-          text: 'Der Fall ist gelöst! Marcus Jin aus dem Helios-Labor und Dante Zero vom Null-Sequence-Syndikat haben zusammengearbeitet. Du hast alle 10 Stufen meisterhaft mit reinem SQL aufgeklärt!',
+          text: 'Der Fall ist gelöst! Jhin aus dem Helios-Labor und Zed vom Null-Sequence-Syndikat haben zusammengearbeitet. Du hast alle 10 Stufen meisterhaft mit reinem SQL aufgeklärt!',
           sqlTip: 'Herzlichen Glückwunsch! Du hast das Grundlagen-Tutorial und die angewandten Praxisermittlungen erfolgreich gemeistert.',
         },
       ],
@@ -645,7 +645,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: '1단계: SELECT / FROM',
       conceptBadge: 'SELECT · FROM',
       briefing:
-        '신입 데이터 수사관 이안 조, 아이기스 수사국에 합류한 것을 환영합니다. 오늘 새벽 헬리오스 코어 연구소에서 대규모 데이터 유출 경보가 발생했습니다. 먼저 중앙 데이터베이스가 정상 작동하는지 확인하기 위해 시민 명부(`Citizens`) 테이블의 모든 데이터를 조회하세요.',
+        '신입 데이터 수사관 이즈리얼, 아이기스 수사국에 합류한 것을 환영합니다. 오늘 새벽 헬리오스 코어 연구소에서 대규모 데이터 유출 경보가 발생했습니다. 먼저 중앙 데이터베이스가 정상 작동하는지 확인하기 위해 시민 명부(`Citizens`) 테이블의 모든 데이터를 조회하세요.',
       objectiveSummary:
         'Citizens 테이블의 모든 컬럼과 모든 행(10명)을 조회하는 SELECT 쿼리를 작성하고 실행하세요.',
       starterQuery:
@@ -657,9 +657,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장',
-          text: '좋아요! Citizens 테이블의 10명 명단이 정상적으로 출력되었군요. 잠깐, 3번 시민인 엘레나 송(Dr. Elena Song) 박사의 상태(status) 컬럼을 보세요... MISSING(실종)으로 바뀌어 있어요!',
+          text: '좋아요! Citizens 테이블의 10명 명단이 정상적으로 출력되었군요. 잠깐, 3번 시민인 Dr. 하이머딩거(Dr. Heimerdinger) 박사의 상태(status) 컬럼을 보세요... MISSING(실종)으로 바뀌어 있어요!',
           sqlTip: 'SELECT * FROM 테이블명 은 테이블의 전체 구조를 빠르게 파악할 때 가장 먼저 사용하는 기본 쿼리입니다.',
         },
       ],
@@ -669,7 +669,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: '2단계: WHERE 조건절',
       conceptBadge: 'WHERE · 조건 필터링',
       briefing:
-        '엘레나 송 박사는 헬리오스 양자서버실의 설계자입니다. 그녀가 실종된 시각, 보안 등급(clearance_level)이 4등급 이상인 내부자만 접근할 수 있는 구역에서 이상 신호가 잡혔습니다. 정확히 실종 상태(`status = \'MISSING\'`)인 시민 레코드를 `WHERE` 절로 찾아내세요.',
+        'Dr. 하이머딩거는 헬리오스 양자서버실의 설계자입니다. 그녀가 실종된 시각, 보안 등급(clearance_level)이 4등급 이상인 내부자만 접근할 수 있는 구역에서 이상 신호가 잡혔습니다. 정확히 실종 상태(`status = \'MISSING\'`)인 시민 레코드를 `WHERE` 절로 찾아내세요.',
       objectiveSummary:
         "Citizens 테이블에서 WHERE 절을 사용하여 status 컬럼 값이 'MISSING'인 시민을 조회하세요.",
       starterQuery:
@@ -681,9 +681,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '카일 반스 감독관',
+          speakerName: '제이스 감독관',
           speakerRole: '시스템 보안 감독관',
-          text: '확실하군. 고유번호 1003번, 엘레나 송 박사(Dr. Elena Song). 보안 등급 5등급 아키텍트가 어젯밤 서버실 백업 직후 자취를 감췄어. 이제 그 시간대 보안 로그를 뒤져봐야겠어.',
+          text: '확실하군. 고유번호 1003번, Dr. 하이머딩거(Dr. Heimerdinger). 보안 등급 5등급 아키텍트가 어젯밤 서버실 백업 직후 자취를 감췄어. 이제 그 시간대 보안 로그를 뒤져봐야겠어.',
           sqlTip: "WHERE 절에서는 =, !=, >, <, >=, <= 연산자와 AND, OR, IN, LIKE 등을 조합해 원하는 데이터만 정밀하게 추출할 수 있습니다.",
         },
       ],
@@ -705,7 +705,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장',
           text: '상위 3건의 위협 로그를 보세요! log_id 9009번은 해커가 남긴 가짜 노이즈 로그이고, 9004번(citizen_id: 1008)과 9005번(citizen_id: 1004, CORE_TABLE_EXPORT)이 실제 범행 흔적이에요!',
           sqlTip: 'ORDER BY 컬럼 DESC LIMIT N 조합은 Top-N 랭킹이나 가장 위험한 이벤트를 즉시 찾아낼 때 실무에서도 매일 쓰입니다.',
@@ -717,11 +717,11 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: '4단계: UPDATE',
       conceptBadge: 'UPDATE · 상태 갱신',
       briefing:
-        '방금 발견한 `SecurityLogs`의 9005번 로그(`CORE_TABLE_EXPORT`)를 일으킨 인물은 `citizen_id = 1004` (마커스 진, 코어 시스템 엔지니어)입니다! `Citizens` 테이블에서 마커스 진(`citizen_id = 1004`)의 상태(`status`)를 `UPDATE` 문을 사용해 `\'SUSPECT\'`(용의자)로 변경하세요!',
+        '방금 발견한 `SecurityLogs`의 9005번 로그(`CORE_TABLE_EXPORT`)를 일으킨 인물은 `citizen_id = 1004` (진, 코어 시스템 엔지니어)입니다! `Citizens` 테이블에서 진(`citizen_id = 1004`)의 상태(`status`)를 `UPDATE` 문을 사용해 `\'SUSPECT\'`(용의자)로 변경하세요!',
       objectiveSummary:
         "UPDATE 문을 사용하여 Citizens 테이블에서 citizen_id = 1004 인 행의 status 값을 'SUSPECT'로 수정하세요.",
       starterQuery:
-        "-- 테마 1 - 4단계: 1004번 시민(마커스 진)의 상태를 SUSPECT로 변경하세요.\nUPDATE Citizens\nSET status = 'SUSPECT'\nWHERE citizen_id = 1004;",
+        "-- 테마 1 - 4단계: 1004번 시민(진)의 상태를 SUSPECT로 변경하세요.\nUPDATE Citizens\nSET status = 'SUSPECT'\nWHERE citizen_id = 1004;",
       hints: [
         '기존 데이터를 수정할 때는 UPDATE 테이블명 SET 컬럼 = 값 WHERE 조건; 문법을 사용합니다.',
         'WHERE 절을 생략하면 모든 시민의 상태가 바뀌어버리니 반드시 WHERE citizen_id = 1004 를 지정하세요!',
@@ -729,9 +729,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '카일 반스 감독관',
+          speakerName: '제이스 감독관',
           speakerRole: '시스템 보안 감독관',
-          text: '마커스 진(citizen_id: 1004)을 공식 용의자(SUSPECT)로 전환 완료했군! 이제 마커스 진이 데이터를 빼돌린 대가로 뒷돈을 얼마나 챙겼는지 금융 거래(`Transactions`)를 추적하자.',
+          text: '진(citizen_id: 1004)을 공식 용의자(SUSPECT)로 전환 완료했군! 이제 진이 데이터를 빼돌린 대가로 뒷돈을 얼마나 챙겼는지 금융 거래(`Transactions`)를 추적하자.',
           sqlTip: 'UPDATE와 DELETE를 실행할 때는 항상 WHERE 조건절이 정확한지 먼저 확인하는 습관이 필수적입니다.',
         },
       ],
@@ -753,9 +753,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장',
-          text: '기초 튜토리얼을 훌륭하게 완수하셨습니다! sender_id 1004번(마커스 진)이 총 3건, 162,000 크레딧을 외부로 빼돌렸군요. 이제 테마 2에서 배운 지식을 스스로 응용하여 본격적인 실전 수사에 나설 차례입니다!',
+          text: '기초 튜토리얼을 훌륭하게 완수하셨습니다! sender_id 1004번(진)이 총 3건, 162,000 크레딧을 외부로 빼돌렸군요. 이제 테마 2에서 배운 지식을 스스로 응용하여 본격적인 실전 수사에 나설 차례입니다!',
           sqlTip: 'GROUP BY와 집계 함수(COUNT, SUM, AVG)를 결합하면 방대한 거래 기록도 단 몇 줄의 요약 통계표로 압축할 수 있습니다.',
         },
       ],
@@ -765,7 +765,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: '응용 1단계: WHERE 다중 조건 (AND)',
       conceptBadge: 'WHERE · 복합 조건',
       briefing:
-        '기초 튜토리얼을 마친 이안 수사관, 이제 실전 응용 수사입니다! 헬리오스 서버실 사건 당시 출입 인가권을 가진 인물 중, 높은 보안 등급(`clearance_level >= 4`)을 가졌으면서 현재 활동 중(`status = \'ACTIVE\'`)인 고위험 시민들을 모두 추려내세요. 단일 조건이 아닌 `AND` 연산자를 응용해 두 조건을 동시에 만족하는 대상자들을 추출하세요.',
+        '기초 튜토리얼을 마친 이즈리얼 수사관, 이제 실전 응용 수사입니다! 헬리오스 서버실 사건 당시 출입 인가권을 가진 인물 중, 높은 보안 등급(`clearance_level >= 4`)을 가졌으면서 현재 활동 중(`status = \'ACTIVE\'`)인 고위험 시민들을 모두 추려내세요. 단일 조건이 아닌 `AND` 연산자를 응용해 두 조건을 동시에 만족하는 대상자들을 추출하세요.',
       objectiveSummary:
         "Citizens 테이블에서 clearance_level이 4 이상이고 status가 'ACTIVE'인 시민들을 WHERE ... AND ... 조건으로 조회하세요.",
       starterQuery:
@@ -777,9 +777,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장',
-          text: '완벽한 조건 조합입니다! 보안 등급 4 이상이면서 ACTIVE 상태인 인물들이 정밀하게 추출되었어요. 카일 감독관과 세라 감사관, 그리고 마커스 진이 명단에 있군요. 이들의 금융 거래를 교차 확인해야 합니다.',
+          text: '완벽한 조건 조합입니다! 보안 등급 4 이상이면서 ACTIVE 상태인 인물들이 정밀하게 추출되었어요. 제이스 감독관과 세라핀 감사관, 그리고 진이 명단에 있군요. 이들의 금융 거래를 교차 확인해야 합니다.',
           sqlTip: '실무에서는 여러 보안 조건을 AND 또는 OR로 결합해 정밀한 표적 집단을 신속하게 추출합니다.',
         },
       ],
@@ -801,7 +801,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '카일 반스 감독관',
+          speakerName: '제이스 감독관',
           speakerRole: '시스템 보안 감독관',
           text: '거래 내역 상위 3건을 봐! 80,000 크레딧, 65,000 크레딧, 52,000 크레딧... 엄청난 액수의 자금이 한곳으로 흘러들어가고 있어. 이 돈을 받아 챙긴 수신자가 누구인지 집계해야 한다.',
           sqlTip: 'WHERE 조건으로 노이즈 데이터를 먼저 제거한 뒤 ORDER BY와 LIMIT을 적용하면 질의 성능과 결과 정확도가 대폭 향상됩니다.',
@@ -825,9 +825,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장',
-          text: '수신 집계표가 명백한 증거를 보여줍니다! receiver_id 1008번이 총 145,000 크레딧을 받아 챙겼어요. 이 인물은 널 시퀀스의 전문 해커 단테 제로입니다! 당장 계좌를 동결해야 해요.',
+          text: '수신 집계표가 명백한 증거를 보여줍니다! receiver_id 1008번이 총 145,000 크레딧을 받아 챙겼어요. 이 인물은 널 시퀀스의 전문 해커 제드입니다! 당장 계좌를 동결해야 해요.',
           sqlTip: '거래 데이터에서 송신자와 수신자 양방향을 모두 GROUP BY로 분석하면 자금의 발원지와 종착지를 완벽히 추적할 수 있습니다.',
         },
       ],
@@ -837,11 +837,11 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: '응용 4단계: 조건부 UPDATE',
       conceptBadge: 'UPDATE · 자산 동결',
       briefing:
-        '수신 자금 집계 결과, 고스트 프로토콜 해커 단테 제로(`citizen_id = 1008`)에게 145,000 크레딧의 거액이 집중 수신된 것이 확인되었습니다. 추가적인 데이터 탈취와 자금 세탁을 막기 위해, `UPDATE` 문을 실행하여 `citizen_id = 1008`인 시민의 `status`를 `\'FROZEN\'`(자산 동결)으로 즉각 변경하세요!',
+        '수신 자금 집계 결과, 고스트 프로토콜 해커 제드(`citizen_id = 1008`)에게 145,000 크레딧의 거액이 집중 수신된 것이 확인되었습니다. 추가적인 데이터 탈취와 자금 세탁을 막기 위해, `UPDATE` 문을 실행하여 `citizen_id = 1008`인 시민의 `status`를 `\'FROZEN\'`(자산 동결)으로 즉각 변경하세요!',
       objectiveSummary:
         "UPDATE 문을 사용하여 Citizens 테이블에서 citizen_id = 1008 인 행의 status 값을 'FROZEN'으로 수정하세요.",
       starterQuery:
-        "-- 테마 2 - 4단계: 해커 단테 제로(citizen_id = 1008)의 상태를 FROZEN으로 동결하세요.\nUPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
+        "-- 테마 2 - 4단계: 해커 제드(citizen_id = 1008)의 상태를 FROZEN으로 동결하세요.\nUPDATE Citizens\nSET status = 'FROZEN'\nWHERE citizen_id = 1008;",
       hints: [
         'UPDATE Citizens SET status = ... WHERE citizen_id = 1008; 구조를 사용합니다.',
         "지정할 상태 값은 작은따옴표로 감싼 'FROZEN' 입니다.",
@@ -849,9 +849,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '카일 반스 감독관',
+          speakerName: '제이스 감독관',
           speakerRole: '시스템 보안 감독관',
-          text: '단테 제로(1008)의 모든 계좌와 네트워크 접근 권한이 성공적으로 FROZEN(동결)되었다! 이제 외부와의 통신이 모두 차단됐다. 마지막으로 사건에 연루된 시민들과 조직들의 관계를 교차 검증하자.',
+          text: '제드(1008)의 모든 계좌와 네트워크 접근 권한이 성공적으로 FROZEN(동결)되었다! 이제 외부와의 통신이 모두 차단됐다. 마지막으로 사건에 연루된 시민들과 조직들의 관계를 교차 검증하자.',
           sqlTip: '사이버 보안 실무에서 조건부 UPDATE는 침해 계정을 즉시 격리하거나 비밀번호를 강제 만료시키는 긴급 방어 조치로 활용됩니다.',
         },
       ],
@@ -861,7 +861,7 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       sqlConcept: '응용 5단계: INNER JOIN 교차 검증',
       conceptBadge: 'INNER JOIN · 기관 대조',
       briefing:
-        '동결 조치 이후, 이안 수사관은 시민들의 소속 기관 배후를 전면 파악하고자 합니다. `Citizens` 테이블과 `Organizations` 테이블을 `org_id` 외래키로 결합(`JOIN`)하여, 각 시민의 **이름(`Citizens.name`)**, **역할(`Citizens.role`)**, **소속 기관명(`Organizations.name`)**을 한눈에 결합 조회하여 사건의 전모를 밝혀내세요!',
+        '동결 조치 이후, 이즈리얼 수사관은 시민들의 소속 기관 배후를 전면 파악하고자 합니다. `Citizens` 테이블과 `Organizations` 테이블을 `org_id` 외래키로 결합(`JOIN`)하여, 각 시민의 **이름(`Citizens.name`)**, **역할(`Citizens.role`)**, **소속 기관명(`Organizations.name`)**을 한눈에 결합 조회하여 사건의 전모를 밝혀내세요!',
       objectiveSummary:
         'Citizens와 Organizations 테이블을 org_id 기준으로 JOIN하여 시민 이름(Citizens.name), 역할(Citizens.role), 소속 기관명(Organizations.name)을 조회하세요.',
       starterQuery:
@@ -873,9 +873,9 @@ export const MISSIONS_I18N: Record<SupportedLanguage, Record<number, MissionI18n
       ],
       successDialogue: [
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장',
-          text: '사건 전모가 완전히 밝혀졌습니다! 헬리오스 연구소의 마커스 진과 널 시퀀스의 단테 제로가 결탁한 전모를 이안 수사관님이 SQL만으로 완벽하게 규명하셨어요. 축하합니다! 테마 1 기초부터 테마 2 실전 응용까지 모든 수사를 성공적으로 완수하셨습니다!',
+          text: '사건 전모가 완전히 밝혀졌습니다! 헬리오스 연구소의 진과 널 시퀀스의 제드가 결탁한 전모를 이즈리얼 수사관님이 SQL만으로 완벽하게 규명하셨어요. 축하합니다! 테마 1 기초부터 테마 2 실전 응용까지 모든 수사를 성공적으로 완수하셨습니다!',
           sqlTip: '축하합니다! 1단계 기초 튜토리얼부터 2단계 실전 응용 수사까지, 관계형 데이터베이스의 핵심 SQL 기술을 완벽하게 마스터하셨습니다.',
         },
       ],
@@ -892,17 +892,17 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
       title: 'Das verstummte Quanten-Herz',
       subtitle: 'SELECT · WHERE · ORDER BY / LIMIT Grundlagen',
       synopsis:
-        'Neo-Archive City, 2086. Im Helios-Quantenserverlabor heult der Alarm. Chef-Architektin Dr. Elena Song ist spurlos verschwunden. Ermittler Ian Cho beginnt die Suche mit grundlegenden SQL-Abfragen.',
+        'Neo-Archive City, 2086. Im Helios-Quantenserverlabor heult der Alarm. Chef-Architektin Dr. Heimerdinger ist spurlos verschwunden. Ermittler Ezreal beginnt die Suche mit grundlegenden SQL-Abfragen.',
       locationSector: 'SEKTOR-01 Aegis-Zentralanalyse & SEKTOR-02 Quantenserver',
       introDialogues: [
         {
-          speakerName: 'Aria Chen',
+          speakerName: 'Ahri',
           speakerRole: 'Leiterin Datenanalyse (Aegis Bureau)',
-          text: 'Ian, Notstand an deinem ersten Tag. Um Mitternacht wurden Kern-Tabellen aus Labor 2 kopiert, und Dr. Elena Song antwortet nicht mehr.',
+          text: 'Ezreal, Notstand an deinem ersten Tag. Um Mitternacht wurden Kern-Tabellen aus Labor 2 kopiert, und Dr. Heimerdinger antwortet nicht mehr.',
           sqlTip: 'Klicke jederzeit auf die Tabellen im Schema-Browser, um deren Spalten und Datentypen zu inspizieren.',
         },
         {
-          speakerName: 'Kyle Vance',
+          speakerName: 'Jayce',
           speakerRole: 'Leiter Systemsicherheit',
           text: 'Der SQLite-Dump des Terminal-Speichers ist auf deiner Konsole bereitgestellt. Finde die Vermisste und die gefährlichsten Zugriffsprotokolle!',
         },
@@ -910,12 +910,12 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
       objects: [
         {
           id: 'obj-ch1-terminal',
-          name: 'Sicherheitskonsole von Dr. Song',
+          name: 'Sicherheitskonsole von Dr. Heimerdinger',
           locationName: 'SEC-02 Quantenserverraum',
           shortDesc: 'Terminal mit dem letzten Backup-Befehl vor dem Verschwinden',
           inspectionReport:
             'Auf dem Bildschirm ist eine Notiz geöffnet: "Jemand kopiert Kern-Tabellen mit Administrator-Rechten. Prüfe den Status in Citizens und die threat_scores in SecurityLogs!"',
-          unlocksClueText: 'Beweis gesichert: Status von Dr. Elena Song ist MISSING. Starker Verdacht auf Innentäter.',
+          unlocksClueText: 'Beweis gesichert: Status von Dr. Heimerdinger ist MISSING. Starker Verdacht auf Innentäter.',
         },
         {
           id: 'obj-ch1-cctv',
@@ -932,16 +932,16 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
       title: 'Das manipulierte Hauptbuch',
       subtitle: 'UPDATE · GROUP BY · JOIN Vertiefung',
       synopsis:
-        'Der Datendieb ist enttarnt: Marcus Jin aus dem Helios-Labor. Erfasse ihn als Tatverdächtigen und rekonstruiere den Geldfluss sowie seine Komplizen mit relationalen Abfragen.',
+        'Der Datendieb ist enttarnt: Jhin aus dem Helios-Labor. Erfasse ihn als Tatverdächtigen und rekonstruiere den Geldfluss sowie seine Komplizen mit relationalen Abfragen.',
       locationSector: 'SEKTOR-03 Nexus Sky Vault & SEKTOR-04 Neon-Markt',
       introDialogues: [
         {
-          speakerName: 'Kyle Vance',
+          speakerName: 'Jayce',
           speakerRole: 'Leiter Systemsicherheit',
-          text: 'Log 9005 gehört zu citizen_id 1004 – Marcus Jin! Aktualisiere seinen Datensatz sofort mit UPDATE auf SUSPECT!',
+          text: 'Log 9005 gehört zu citizen_id 1004 – Jhin! Aktualisiere seinen Datensatz sofort mit UPDATE auf SUSPECT!',
         },
         {
-          speakerName: 'Aria Chen',
+          speakerName: 'Ahri',
           speakerRole: 'Leiterin Datenanalyse',
           text: 'Bündle anschließend die Transaktionen nach Absender mit GROUP BY und verbinde die Klarnamen mit JOIN.',
           sqlTip: 'Stufe 4 nutzt UPDATE, Stufe 5 GROUP BY und SUM(), und Stufe 6 verbindet Tabellen mit JOIN.',
@@ -955,7 +955,7 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
           shortDesc: 'Relaisstation für verschlüsselte Darkpool-Zahlungen',
           inspectionReport:
             'Im Cache finden sich mehrere verschlüsselte Transaktionen von Absender 1004 an Zwischenhändler der Unterwelt.',
-          unlocksClueText: 'Beweis gesichert: Marcus Jin (1004) hat 162.000 Credits an Unterwelt-Broker überwiesen.',
+          unlocksClueText: 'Beweis gesichert: Jhin (1004) hat 162.000 Credits an Unterwelt-Broker überwiesen.',
         },
         {
           id: 'obj-ch2-server',
@@ -964,7 +964,7 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
           shortDesc: 'Modul zur Verknüpfung von Log-IDs mit Personendaten über Fremdschlüssel',
           inspectionReport:
             'Ein JOIN zwischen SecurityLogs und Citizens ordnet jeder Bedrohungszeile den vollständigen Klarnamen zu.',
-          unlocksClueText: 'Beweis gesichert: Arbeitsteilung zwischen Insider Marcus Jin und Hacker Dante Zero nachgewiesen.',
+          unlocksClueText: 'Beweis gesichert: Arbeitsteilung zwischen Insider Jhin und Hacker Zed nachgewiesen.',
         },
       ],
     },
@@ -972,18 +972,18 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
       title: 'Das Herz von Protokoll Zero',
       subtitle: 'Mehrfachfilter · Konto-Sperren · Organisationen-JOIN',
       synopsis:
-        'Hinter Jin steht das Syndikat "Null Sequence". Durchbreche die Täuschungsmanöver, friere die Konten der Täter ein und verbinde alle Fäden für den finalen Schlag.',
+        'Hinter Jhin steht das Syndikat "Null Sequence". Durchbreche die Täuschungsmanöver, friere die Konten der Täter ein und verbinde alle Fäden für den finalen Schlag.',
       locationSector: 'SEKTOR-05 Stillgelegte Station 9 & Gerichtshof',
       introDialogues: [
         {
-          speakerName: 'Dante Zero (Abgehört)',
+          speakerName: 'Zed (Abgehört)',
           speakerRole: 'Ghost-Protokoll Hacker (Null Sequence)',
           text: '"Ihr Aegis-Ermittler habt lange gebraucht. Aber glaubt ihr wirklich, ihr könnt unsere Organisationen und Konten entwirren?"',
         },
         {
-          speakerName: 'Aria Chen',
+          speakerName: 'Ahri',
           speakerRole: 'Leiterin Datenanalyse',
-          text: 'Lass dich nicht provozieren, Ian! Wir frieren sein Konto ein und verknüpfen Citizens mit Organizations für die lückenlose Anklage!',
+          text: 'Lass dich nicht provozieren, Ezreal! Wir frieren sein Konto ein und verknüpfen Citizens mit Organizations für die lückenlose Anklage!',
         },
       ],
       objects: [
@@ -993,7 +993,7 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
           locationName: 'SEC-05 U-Bahn Station 9',
           shortDesc: 'Hardware-Schlüssel mit Organisationscode ORG-NullSec',
           inspectionReport:
-            'Im Speicher liegen Verweise zwischen Organizations (org_id 5) und den Mitgliedern Victor Crow und Dante Zero.',
+            'Im Speicher liegen Verweise zwischen Organizations (org_id 5) und den Mitgliedern Victor Crow und Zed.',
           unlocksClueText: 'Beweis gesichert: Station 9 dient dem Syndikat Null Sequence als Operationsbasis.',
         },
         {
@@ -1013,17 +1013,17 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
       title: '침묵하는 양자 코어 (The Silent Quantum Core)',
       subtitle: 'SELECT · WHERE · ORDER BY / LIMIT 기초 수사',
       synopsis:
-        '2086년 네오-아카이브 시티. 도시의 모든 기억과 금융을 관리하는 헬리오스 제1양자서버실에서 심야 데이터 유출 경보가 울리고, 수석 DB 아키텍트 엘레나 송 박사가 실종된다. 신입 분석관 이안 조는 가장 기본적인 SQL 조회 명령으로 실종자의 흔적과 심야의 침입 로그를 추적한다.',
+        '2086년 네오-아카이브 시티. 도시의 모든 기억과 금융을 관리하는 헬리오스 제1양자서버실에서 심야 데이터 유출 경보가 울리고, 수석 DB 아키텍트 Dr. 하이머딩거가 실종된다. 신입 분석관 이즈리얼는 가장 기본적인 SQL 조회 명령으로 실종자의 흔적과 심야의 침입 로그를 추적한다.',
       locationSector: 'SEC-01 아이기스 중앙 분석실 & SEC-02 양자서버실',
       introDialogues: [
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장 (Aegis Bureau)',
-          text: '이안 수사관, 첫 출근날부터 비상사태야. 오늘 새벽 00시경 헬리오스 제1양자서버실(SEC-02)에서 코어 테이블이 외부로 반출됐고, 수석 아키텍트 엘레나 송 박사와 연락이 두절됐어.',
+          text: '이즈리얼 수사관, 첫 출근날부터 비상사태야. 오늘 새벽 00시경 헬리오스 제1양자서버실(SEC-02)에서 코어 테이블이 외부로 반출됐고, 수석 아키텍트 Dr. 하이머딩거와 연락이 두절됐어.',
           sqlTip: '우측 스키마 브라우저에서 7개 핵심 테이블을 언제든 클릭해 구조를 확인할 수 있습니다.',
         },
         {
-          speakerName: '카일 반스 감독관',
+          speakerName: '제이스 감독관',
           speakerRole: '시스템 보안 감독관',
           text: '현장 단말기에서 회수한 SQLite 스냅샷을 네 콘솔에 마운트해 두었다. 먼저 시민 명부(Citizens)를 열람해서 실종자를 확인하고, 보안 로그(SecurityLogs)에서 가장 위협 점수가 높은 침입 기록을 찾아내!',
         },
@@ -1031,12 +1031,12 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
       objects: [
         {
           id: 'obj-ch1-terminal',
-          name: '엘레나 박사의 개인 보안 단말기',
+          name: '하이머딩거 박사의 개인 보안 단말기',
           locationName: 'SEC-02 헬리오스 제1양자서버실',
           shortDesc: '실종 직전 마지막 백업 명령이 실행된 콘솔',
           inspectionReport:
             '단말기 화면에 미처 닫히지 않은 메모가 남아 있다: "누군가 내부 관리자 권한으로 코어 테이블을 복사하고 있다. 내 신변에 문제가 생기면 Citizens 테이블의 status 컬럼과 SecurityLogs의 threat_score를 확인하라."',
-          unlocksClueText: '단서 획득: 엘레나 송 박사(citizen_id: 1003)의 상태는 MISSING이며, 내부자 소행일 가능성이 높음.',
+          unlocksClueText: '단서 획득: Dr. 하이머딩거(citizen_id: 1003)의 상태는 MISSING이며, 내부자 소행일 가능성이 높음.',
         },
         {
           id: 'obj-ch1-cctv',
@@ -1053,18 +1053,18 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
       title: '오염된 원장과 내부의 그림자 (Corrupted Ledger)',
       subtitle: 'UPDATE · GROUP BY · JOIN 심화 수사',
       synopsis:
-        '양자서버실에서 코어 테이블을 반출한 내부자가 헬리오스 연구소의 엔지니어 마커스 진(citizen_id: 1004)임이 드러났다. 용의자의 신분을 데이터베이스에 즉시 갱신(UPDATE)하고, 그룹 집계(GROUP BY)와 테이블 결합(JOIN)을 통해 검은 자금의 규모와 공범의 실명을 밝혀내라.',
+        '양자서버실에서 코어 테이블을 반출한 내부자가 헬리오스 연구소의 엔지니어 진(citizen_id: 1004)임이 드러났다. 용의자의 신분을 데이터베이스에 즉시 갱신(UPDATE)하고, 그룹 집계(GROUP BY)와 테이블 결합(JOIN)을 통해 검은 자금의 규모와 공범의 실명을 밝혀내라.',
       locationSector: 'SEC-03 넥서스 스카이 볼트 & SEC-04 네온 마켓 환전소',
       introDialogues: [
         {
-          speakerName: '카일 반스 감독관',
+          speakerName: '제이스 감독관',
           speakerRole: '시스템 보안 감독관',
-          text: '9005번 로그(CORE_TABLE_EXPORT)를 실행한 citizen_id 1004번이 누군지 확인했나? 바로 헬리오스 연구소의 코어 시스템 엔지니어 마커스 진(Marcus Jin)이다! 즉시 Citizens 테이블에서 그의 상태를 SUSPECT(용의자)로 UPDATE 해!',
+          text: '9005번 로그(CORE_TABLE_EXPORT)를 실행한 citizen_id 1004번이 누군지 확인했나? 바로 헬리오스 연구소의 코어 시스템 엔지니어 진(Jhin)이다! 즉시 Citizens 테이블에서 그의 상태를 SUSPECT(용의자)로 UPDATE 해!',
         },
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장',
-          text: '용의자 등록을 마친 뒤에는 금융 거래 테이블(Transactions)을 송금자별로 GROUP BY 집계해서 마커스 진이 외부로 빼돌린 자금 총액을 계산하고, JOIN으로 공범들의 실명을 모두 연결해 주세요.',
+          text: '용의자 등록을 마친 뒤에는 금융 거래 테이블(Transactions)을 송금자별로 GROUP BY 집계해서 진이 외부로 빼돌린 자금 총액을 계산하고, JOIN으로 공범들의 실명을 모두 연결해 주세요.',
           sqlTip: '4단계에서는 UPDATE 문을, 5단계에서는 GROUP BY와 SUM()을, 6단계에서는 JOIN ... ON 구문을 실전 데이터에 적용합니다.',
         },
       ],
@@ -1076,7 +1076,7 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
           shortDesc: '다크풀 암호화폐 이체가 이루어진 중계 단말기',
           inspectionReport:
             '환전소 캐시 메모리에서 송금자 ID(sender_id) 1004번이 보낸 다수의 암호화 송금 패킷이 발견되었다.',
-          unlocksClueText: '단서 획득: 마커스 진(1004)은 총 3차례에 걸쳐 162,000 크레딧을 지하 조직 브로커와 해커에게 송금함.',
+          unlocksClueText: '단서 획득: 진(1004)은 총 3차례에 걸쳐 162,000 크레딧을 지하 조직 브로커와 해커에게 송금함.',
         },
         {
           id: 'obj-ch2-server',
@@ -1085,7 +1085,7 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
           shortDesc: '외래키(citizen_id)를 기준으로 실명을 매핑하는 분석 모듈',
           inspectionReport:
             'SecurityLogs 테이블의 citizen_id와 Citizens 테이블의 citizen_id를 JOIN하면 각 보안 이벤트를 일으킨 인물의 실명과 직책을 한눈에 대조할 수 있다.',
-          unlocksClueText: '단서 획득: 내부자 마커스 진과 외부 해커 단테 제로(Dante Zero)의 역할 분담 확인.',
+          unlocksClueText: '단서 획득: 내부자 진과 외부 해커 제드(Zed)의 역할 분담 확인.',
         },
       ],
     },
@@ -1093,18 +1093,18 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
       title: '제로 프로토콜의 심장 (Heart of Protocol Zero)',
       subtitle: '복합 조건 · 계좌 동결 · 조직 교차 대조',
       synopsis:
-        '내부자 마커스 진의 배후에는 지하 해커 조직 "널 시퀀스 신디케이트(Null Sequence)"가 있었다. 복합 필터와 계좌 동결, 그리고 조직 간의 JOIN 관계망으로 배후 조직을 완벽히 규명하고 사건을 종결하라.',
+        '내부자 진의 배후에는 지하 해커 조직 "널 시퀀스 신디케이트(Null Sequence)"가 있었다. 복합 필터와 계좌 동결, 그리고 조직 간의 JOIN 관계망으로 배후 조직을 완벽히 규명하고 사건을 종결하라.',
       locationSector: 'SEC-05 구 지하철 제9폐쇄역 & 아이기스 대법정',
       introDialogues: [
         {
-          speakerName: '단테 제로 (감청된 통신)',
+          speakerName: '제드 (감청된 통신)',
           speakerRole: '고스트 프로토콜 해커 (Null Sequence)',
           text: '"흥, 아이기스 신입 분석관이 여기까지 꼬리를 밟았군. 하지만 우린 Organizations와 Transactions에 걸쳐 데이터를 분산해 두었지."',
         },
         {
-          speakerName: '아리아 첸 팀장',
+          speakerName: '아리 팀장',
           speakerRole: '수석 데이터 분석팀장',
-          text: '도발에 넘어가지 마세요, 이안! 불법 수신 계좌를 동결하고 Organizations 테이블과의 JOIN으로 조직망 전체를 기소합시다!',
+          text: '도발에 넘어가지 마세요, 이즈리얼! 불법 수신 계좌를 동결하고 Organizations 테이블과의 JOIN으로 조직망 전체를 기소합시다!',
         },
       ],
       objects: [
@@ -1114,8 +1114,8 @@ export const CHAPTERS_I18N: Record<SupportedLanguage, Record<number, ChapterI18n
           locationName: 'SEC-05 구 지하철 제9폐쇄역 입구',
           shortDesc: '조직 코드 ORG-NullSec 이 각인된 하드웨어 키',
           inspectionReport:
-            '토큰 내부에 Organizations(org_id: 5)와 소속 조직원 빅터 크로우, 단테 제로의 연결 정보가 들어 있다.',
-          unlocksClueText: '단서 획득: 빅터 크로우와 단테 제로는 널 시퀀스 신디케이트(org_id: 5) 소속임.',
+            '토큰 내부에 Organizations(org_id: 5)와 소속 조직원 빅토르, 제드의 연결 정보가 들어 있다.',
+          unlocksClueText: '단서 획득: 빅토르와 제드는 널 시퀀스 신디케이트(org_id: 5) 소속임.',
         },
         {
           id: 'obj-ch3-doc',
@@ -1728,46 +1728,46 @@ export interface EvidenceI18n {
 export const EVIDENCE_I18N: Record<SupportedLanguage, Record<string, EvidenceI18n>> = {
   de: {
     'EV-001': {
-      title: 'Letztes Backup-Protokoll von Dr. Elena Song',
+      title: 'Letztes Backup-Protokoll von Dr. Heimerdinger',
       summary: 'Snapshots im Quantenserverraum kurz vor ihrem Verschwinden bestätigt.',
     },
     'EV-002': {
-      title: 'Vermisstenalarmakte: Elena Song',
-      summary: 'Chefarchitektin Elena Song (citizen_id: 1003, Freigabe 5) als VERMISST gemeldet.',
+      title: 'Vermisstenalarmakte: Dr. Heimerdinger',
+      summary: 'Chefarchitektin Dr. Heimerdinger (citizen_id: 1003, Freigabe 5) als VERMISST gemeldet.',
     },
     'EV-003': {
       title: 'TERM-H02 Core-Datenleck-Spuren',
       summary: 'Spuren eines Exports sensibler Kerntabellen mit Bedrohungsstufe >= 90 gesichert.',
     },
     'EV-004': {
-      title: 'Marcus Jins Darkpool-Finanzüberweisungen',
-      summary: 'Marcus Jin (1004) hat in 3 Transaktionen 162.000 Credits an illegale Adressen transferiert.',
+      title: 'Jhins Darkpool-Finanzüberweisungen',
+      summary: 'Jhin (1004) hat in 3 Transaktionen 162.000 Credits an illegale Adressen transferiert.',
     },
     'EV-005': {
       title: 'Komplott-Beweis: Helios-Insider & Null-Sequence',
-      summary: 'JOIN-Analyse belegt das gemeinsame Vorgehen von Marcus Jin und Hacker Dante Zero.',
+      summary: 'JOIN-Analyse belegt das gemeinsame Vorgehen von Jhin und Hacker Zed.',
     },
   },
   ko: {
     'EV-001': {
-      title: '엘레나 송 박사의 마지막 백업 로그',
+      title: 'Dr. 하이머딩거의 마지막 백업 로그',
       summary: '실종 직전 제1양자서버실에서 스냅샷을 남긴 기록 확인',
     },
     'EV-002': {
-      title: '엘레나 송 실종 경보 파일',
-      summary: '보안 등급 5등급 수석 아키텍트 엘레나 송(citizen_id: 1003)이 실종(MISSING) 상태임이 확인됨',
+      title: 'Dr. 하이머딩거 실종 경보 파일',
+      summary: '보안 등급 5등급 수석 아키텍트 Dr. 하이머딩거(citizen_id: 1003)이 실종(MISSING) 상태임이 확인됨',
     },
     'EV-003': {
       title: 'TERM-H02 코어 테이블 유출 흔적',
       summary: '위협 점수 90점 이상의 심야 로그 중 코어 테이블 반출(CORE_TABLE_EXPORT) 정황 포착',
     },
     'EV-004': {
-      title: '마커스 진의 다크풀 자금 송금 내역',
-      summary: '마커스 진(1004)이 총 3건, 합계 162,000 크레딧의 비정상 자금을 외부로 이체함',
+      title: '진의 다크풀 자금 송금 내역',
+      summary: '진(1004)이 총 3건, 합계 162,000 크레딧의 비정상 자금을 외부로 이체함',
     },
     'EV-005': {
       title: '헬리오스 연구소 내부자-널 시퀀스 결탁 증거',
-      summary: 'JOIN 분석 결과 헬리오스 소속 마커스 진과 널 시퀀스 소속 단테 제로의 공동 작전 확인',
+      summary: 'JOIN 분석 결과 헬리오스 소속 진과 널 시퀀스 소속 제드의 공동 작전 확인',
     },
   },
 };
@@ -1855,16 +1855,16 @@ export function translateDatabaseCell(
   if (col === 'name' || col === 'org_name') {
     const nameMap: Record<SupportedLanguage, Record<string, string>> = {
       de: {
-        '아리아 첸 (Aria Chen)': 'Aria Chen',
-        '카일 반스 (Kyle Vance)': 'Kyle Vance',
-        '엘레나 송 (Dr. Elena Song)': 'Dr. Elena Song',
-        '마커스 진 (Marcus Jin)': 'Marcus Jin',
-        '빅터 크로우 (Viktor Crow)': 'Viktor Crow',
-        '세라 김 (Sera Kim)': 'Sera Kim',
-        '노아 박 (Noah Park)': 'Noah Park',
-        '단테 제로 (Dante Zero)': 'Dante Zero',
-        '한나 리 (Hanna Lee)': 'Hanna Lee',
-        '이안 조 (Ian Cho)': 'Ian Cho',
+        '아리 (Ahri)': 'Ahri',
+        '제이스 (Jayce)': 'Jayce',
+        '하이머딩거 (Dr. Heimerdinger)': 'Dr. Heimerdinger',
+        '진 (Jhin)': 'Jhin',
+        '빅토르 (Viktor)': 'Viktor',
+        '세라핀 (Seraphine)': 'Seraphine',
+        '에코 (Ekko)': 'Ekko',
+        '제드 (Zed)': 'Zed',
+        '애쉬 (Ashe)': 'Ashe',
+        '이즈리얼 (Ezreal)': 'Ezreal',
         '아이기스 데이터 수사국 (Aegis Bureau)': 'Aegis Data Investigation Bureau',
         '헬리오스 코어 연구소 (Helios Core Lab)': 'Helios Core Lab',
         '넥서스 크레딧 뱅크 (Nexus Credit Bank)': 'Nexus Credit Bank',
@@ -1878,16 +1878,16 @@ export function translateDatabaseCell(
         '스카이원 거주 단지': 'SkyOne Wohnkomplex',
       },
       ko: {
-        'Aria Chen': '아리아 첸 (Aria Chen)',
-        'Kyle Vance': '카일 반스 (Kyle Vance)',
-        'Dr. Elena Song': '엘레나 송 (Dr. Elena Song)',
-        'Marcus Jin': '마커스 진 (Marcus Jin)',
-        'Viktor Crow': '빅터 크로우 (Viktor Crow)',
-        'Sera Kim': '세라 김 (Sera Kim)',
-        'Noah Park': '노아 박 (Noah Park)',
-        'Dante Zero': '단테 제로 (Dante Zero)',
-        'Hanna Lee': '한나 리 (Hanna Lee)',
-        'Ian Cho': '이안 조 (Ian Cho)',
+        'Ahri': '아리 (Ahri)',
+        'Jayce': '제이스 (Jayce)',
+        'Dr. Heimerdinger': '하이머딩거 (Dr. Heimerdinger)',
+        'Jhin': '진 (Jhin)',
+        'Viktor': '빅토르 (Viktor)',
+        'Seraphine': '세라핀 (Seraphine)',
+        'Ekko': '에코 (Ekko)',
+        'Zed': '제드 (Zed)',
+        'Ashe': '애쉬 (Ashe)',
+        'Ezreal': '이즈리얼 (Ezreal)',
         'Aegis Data Investigation Bureau': '아이기스 데이터 수사국 (Aegis Bureau)',
         'Helios Core Lab': '헬리오스 코어 연구소 (Helios Core Lab)',
         'Nexus Credit Bank': '넥서스 크레딧 뱅크 (Nexus Credit Bank)',
@@ -1943,7 +1943,7 @@ export const STAGE_SHORT_SUBTITLES: Record<SupportedLanguage, Record<number, str
     6: 'Isoliere autorisierte Insider mit Sicherheitsfreigabe >= 4',
     7: 'Finde die Top-3 Transaktionen über 50.000 Credits',
     8: 'Analysiere Geldempfänger zur Identifizierung des Zielkontos',
-    9: 'Sperre das Konto des Hauptverdächtigen Dante Zero',
+    9: 'Sperre das Konto des Hauptverdächtigen Zed',
     10: 'Verknüpfe Bürger und Organisationen zur Fallaufklärung',
   },
   ko: {
@@ -1955,7 +1955,7 @@ export const STAGE_SHORT_SUBTITLES: Record<SupportedLanguage, Record<number, str
     6: '보안 4등급 이상 활성 내부 인가자를 추려내라',
     7: '5만 크레딧 이상 거액 거래 상위 3건을 추출하라',
     8: '불법 자금이 모여든 핵심 수신 계좌를 집계하라',
-    9: '해커 단테 제로의 자산을 긴급 동결하라',
+    9: '해커 제드의 자산을 긴급 동결하라',
     10: '시민과 소속 기관을 교차 대조하여 전모를 밝혀라',
   },
 };
@@ -1965,18 +1965,18 @@ export const STAGE_SHORT_SUBTITLES: Record<SupportedLanguage, Record<number, str
 // -------------------------------------------------------------
 export const CHARACTER_LABELS: Record<SupportedLanguage, Record<string, string>> = {
   de: {
-    aria: 'Leitende Analystin Aria Chen',
-    kyle: 'Sicherheitsinspektor Kyle Vance',
-    zero: 'Dante Zero',
-    elena: 'Dr. Elena Song',
-    system: 'Ermittler Ian Cho',
+    aria: 'Leitende Analystin Ahri',
+    kyle: 'Sicherheitsinspektor Jayce',
+    zero: 'Zed',
+    elena: 'Dr. Heimerdinger',
+    system: 'Ermittler Ezreal',
   },
   ko: {
-    aria: '아리아 첸 팀장',
-    kyle: '카일 반스 감독관',
-    zero: '단테 제로',
-    elena: '엘레나 송 박사',
-    system: '이안 조 수사관',
+    aria: '아리 팀장',
+    kyle: '제이스 감독관',
+    zero: '제드',
+    elena: 'Dr. 하이머딩거',
+    system: '이즈리얼 수사관',
   },
 };
 
