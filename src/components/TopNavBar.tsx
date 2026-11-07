@@ -178,9 +178,10 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
           className="navbar-action-btn"
           onClick={onOpenSettings}
           title={t.settingsBtn}
+          aria-label={t.settingsBtn}
         >
           <Settings size={15} />
-          <span>{t.settingsBtn}</span>
+          <span className="navbar-action-label">{t.settingsBtn}</span>
         </button>
       </div>
     </header>

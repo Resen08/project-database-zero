@@ -107,14 +107,13 @@ export const QueryResultPanel: React.FC<QueryResultPanelProps> = ({
 
         {result && (
           <div className="result-stats-group">
-            <span className={`status-dot ${result.success ? 'ok' : 'err'}`}>
-              {result.success ? t.querySuccess : t.queryError}
-            </span>
-            {result.success && (
-              <span className="stat-badge">
+            {result.success ? (
+              <span className="status-dot ok">
                 <strong>{result.rows.length}</strong> {t.queryRows} ·{' '}
                 <strong>{result.columns.length}</strong> {t.queryCols}
               </span>
+            ) : (
+              <span className="status-dot err">{t.queryError}</span>
             )}
             <span className="stat-badge">
               <Clock size={12} /> {result.executionTimeMs} ms
