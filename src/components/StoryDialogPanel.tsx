@@ -56,7 +56,13 @@ export const StoryDialogPanel: React.FC<StoryDialogPanelProps> = ({
   completedMissionIds,
   allMissions,
 }) => {
-  const [activeTab, setActiveTab] = useState<LeftConsoleTab>('mission');
+  const [activeTab, setActiveTab] = useState<LeftConsoleTab>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const left = params.get('left') as LeftConsoleTab | null;
+    return left && ['mission', 'guidebook', 'story', 'clues'].includes(left)
+      ? left
+      : 'mission';
+  });
   const [selectedGuideStage, setSelectedGuideStage] = useState<number>(mission.stageOrder);
   const [selectedObject, setSelectedObject] = useState<InvestigatableObject | null>(null);
 

@@ -452,21 +452,18 @@ body,
   border-radius: var(--radius-full);
   overflow: hidden;
   border: 1.5px solid var(--accent-cyan);
-  background: #091322;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.25), #091322);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+  box-shadow: 0 0 8px rgba(0, 210, 255, 0.35);
+  color: var(--accent-cyan-bright);
 }
 
-.profile-pixel-face {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  display: block;
+.profile-user-icon {
+  color: var(--accent-cyan-bright);
+  filter: drop-shadow(0 0 4px rgba(0, 210, 255, 0.6));
 }
 
 .profile-meta {
@@ -676,26 +673,17 @@ body,
 
 .hero-terminal-unit {
   display: flex;
-  align-items: flex-end;
-  gap: 0.65rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .terminal-desk-obj {
-  width: 58px;
-  height: 32px;
+  width: 76px;
+  height: 48px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: bottom;
-  filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.45));
-}
-
-.player-sprite-char {
-  width: 62px;
-  height: 86px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.85));
+  background-position: center;
+  filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.5));
 }
 
 /* 중앙 메인 네온 타이틀 블록 */
@@ -817,26 +805,17 @@ body,
 
 .hero-server-unit {
   display: flex;
-  align-items: flex-end;
-  gap: 0.6rem;
-}
-
-.aria-sprite-char {
-  width: 68px;
-  height: 86px;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8));
+  align-items: center;
+  justify-content: center;
 }
 
 .server-rack-box {
-  width: 50px;
-  height: 48px;
+  width: 68px;
+  height: 64px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: bottom;
-  filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.35));
+  background-position: center;
+  filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.45));
 }
 
 /* 2. 대형 3개 CTA 액션 버튼 도크 */
@@ -3768,7 +3747,49 @@ dialog::backdrop {
   font-size: 0.85rem;
 }
 
-/* Pixel Sprite Sheet Animations */
+/* Cyber Speaker Badge (Replacing AI character images with clean cyber vector badges) */
+.cyber-speaker-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--accent-cyan);
+  background: radial-gradient(circle at 50% 30%, #16243d 0%, #080c16 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.cyber-speaker-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.speaker-icon-glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.speaker-callsign {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Legacy frames fallback */
 .pixel-avatar-frame {
   width: 48px;
   height: 48px;

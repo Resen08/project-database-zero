@@ -1,7 +1,15 @@
 import React from 'react';
+import {
+  Activity,
+  Cpu,
+  Crosshair,
+  Lock,
+  Radio,
+  Shield,
+  Terminal,
+} from 'lucide-react';
 import { DialogueLine } from '../types/game';
 import { CHARACTER_LABELS, SupportedLanguage } from '../services/i18n';
-import { assetUrl } from '../utils/assets';
 
 interface AvatarSvgProps {
   type: DialogueLine['avatarType'] | 'jhin' | string;
@@ -9,40 +17,55 @@ interface AvatarSvgProps {
   language?: SupportedLanguage;
 }
 
-const CHARACTER_AVATAR_CONFIG: Record<
-  string,
-  {
-    avatarUrl: string;
-    borderColor: string;
-  }
-> = {
+interface SpeakerBadgeConfig {
+  callsign: string;
+  roleTag: string;
+  themeColor: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+}
+
+const SPEAKER_BADGE_CONFIGS: Record<string, SpeakerBadgeConfig> = {
   aria: {
-    avatarUrl: assetUrl('/assets/characters/avatar_ahri.png'),
-    borderColor: '#00f0ff',
+    callsign: 'AHRI',
+    roleTag: 'ANALYST',
+    themeColor: '#00f0ff',
+    icon: Radio,
   },
   kyle: {
-    avatarUrl: assetUrl('/assets/characters/avatar_jayce.png'),
-    borderColor: '#f59e0b',
+    callsign: 'JAYCE',
+    roleTag: 'OPS',
+    themeColor: '#f59e0b',
+    icon: Shield,
   },
   zero: {
-    avatarUrl: assetUrl('/assets/characters/avatar_zed.png'),
-    borderColor: '#ff3b6b',
+    callsign: 'ZED',
+    roleTag: 'SHADOW',
+    themeColor: '#ff3b6b',
+    icon: Lock,
   },
   elena: {
-    avatarUrl: assetUrl('/assets/characters/avatar_heimerdinger.png'),
-    borderColor: '#10b981',
+    callsign: 'HEIMER',
+    roleTag: 'ARCHITECT',
+    themeColor: '#10b981',
+    icon: Cpu,
   },
   jhin: {
-    avatarUrl: assetUrl('/assets/characters/avatar_jhin.png'),
-    borderColor: '#c084fc',
+    callsign: 'JHIN',
+    roleTag: 'SYNDICATE',
+    themeColor: '#c084fc',
+    icon: Crosshair,
   },
   player: {
-    avatarUrl: assetUrl('/assets/characters/avatar_ezreal.png'),
-    borderColor: '#38bdf8',
+    callsign: 'EZREAL',
+    roleTag: 'INVESTIGATOR',
+    themeColor: '#38bdf8',
+    icon: Terminal,
   },
   system: {
-    avatarUrl: assetUrl('/assets/characters/avatar_ezreal.png'),
-    borderColor: '#38bdf8',
+    callsign: 'AEGIS',
+    roleTag: 'SYSTEM',
+    themeColor: '#38bdf8',
+    icon: Activity,
   },
 };
 
@@ -50,7 +73,8 @@ export const AvatarSvg: React.FC<AvatarSvgProps> = ({
   type,
   language = 'de',
 }) => {
-  const cfg = CHARACTER_AVATAR_CONFIG[type] || CHARACTER_AVATAR_CONFIG.system;
+  const cfg = SPEAKER_BADGE_CONFIGS[type] || SPEAKER_BADGE_CONFIGS.system;
+  const Icon = cfg.icon;
   const label =
     CHARACTER_LABELS[language]?.[type] ||
     CHARACTER_LABELS.de[type] ||
@@ -58,16 +82,20 @@ export const AvatarSvg: React.FC<AvatarSvgProps> = ({
 
   return (
     <div
-      className="pixel-avatar-frame unified-pixel-art"
-      style={{ borderColor: cfg.borderColor }}
+      className="cyber-speaker-badge"
+      style={{
+        borderColor: cfg.themeColor,
+        boxShadow: `0 0 10px ${cfg.themeColor}33`,
+      }}
       title={label}
       aria-label={label}
     >
-      <img
-        src={cfg.avatarUrl}
-        alt={label}
-        className="unified-avatar-img pixelated"
-      />
+      <div className="speaker-icon-glyph" style={{ color: cfg.themeColor }}>
+        <Icon size={19} />
+      </div>
+      <span className="speaker-callsign" style={{ color: cfg.themeColor }}>
+        {cfg.callsign}
+      </span>
     </div>
   );
 };

@@ -34,13 +34,6 @@ interface MainMenuProps {
   onOpenSettings: () => void;
 }
 
-const PLAYER_IDLE_FRAMES = [
-  assetUrl('/assets/sprites/player_idle_1.png'),
-  assetUrl('/assets/sprites/player_idle_2.png'),
-  assetUrl('/assets/sprites/player_idle_3.png'),
-  assetUrl('/assets/sprites/player_idle_4.png'),
-];
-
 export const MainMenu: React.FC<MainMenuProps> = ({
   currentMissionId,
   completedMissionIds,
@@ -51,8 +44,6 @@ export const MainMenu: React.FC<MainMenuProps> = ({
   onSelectMissionDirect,
   onOpenSettings,
 }) => {
-  const [animFrame, setAnimFrame] = useState(0);
-
   // Initialize selected theme based on current progression
   const isTheme1Complete = [1, 2, 3, 4, 5].every((id) =>
     completedMissionIds.includes(id)
@@ -60,13 +51,6 @@ export const MainMenu: React.FC<MainMenuProps> = ({
   const [selectedTheme, setSelectedTheme] = useState<1 | 2>(() => {
     return currentMissionId > 5 ? 2 : 1;
   });
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setAnimFrame((prev) => (prev + 1) % 4);
-    }, 200);
-    return () => window.clearInterval(timer);
-  }, []);
 
   const t = UI_TRANSLATIONS[language];
   const completedCount = completedMissionIds.length;
@@ -136,12 +120,6 @@ export const MainMenu: React.FC<MainMenuProps> = ({
                   backgroundImage: `url("${assetUrl('/assets/objects/obj_computer_terminal.png')}")`,
                 }}
               />
-              <div
-                className="player-sprite-char pixelated"
-                style={{
-                  backgroundImage: `url("${assetUrl('/assets/characters/char_ezreal.png')}")`,
-                }}
-              />
             </div>
           </div>
 
@@ -167,12 +145,6 @@ export const MainMenu: React.FC<MainMenuProps> = ({
               </div>
             </div>
             <div className="hero-server-unit">
-              <div
-                className="aria-sprite-char pixelated"
-                style={{
-                  backgroundImage: `url("${assetUrl('/assets/characters/char_ahri.png')}")`,
-                }}
-              />
               <div
                 className="server-rack-box pixelated"
                 style={{

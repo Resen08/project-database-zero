@@ -17,7 +17,6 @@ import {
   UI_TRANSLATIONS,
   getRankByXpAndCount,
 } from '../services/i18n';
-import { assetUrl } from '../utils/assets';
 
 export type NavTabId = 'home' | 'console' | 'codex' | 'stats' | 'achievements';
 
@@ -147,11 +146,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
         {/* 수사관 프로필 칩 */}
         <div className="player-profile-chip" title={`${rank.title} (Level ${rank.level})`}>
           <div className="profile-avatar-mini" aria-hidden="true">
-            <img
-              src={assetUrl('/assets/characters/avatar_ezreal.png')}
-              alt="Investigator Ezreal"
-              className="profile-pixel-face pixelated"
-            />
+            <User size={15} className="profile-user-icon" />
           </div>
           <div className="profile-meta">
             <strong className="profile-level">Lv.{rank.level}</strong>
